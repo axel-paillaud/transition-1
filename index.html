@@ -7,22 +7,34 @@
     <title>Transition 1</title>
   </head>
   <body>
-    <h1>Hello !</h1>
-    <div id="app"></div>
-
-    <template id="my-paragraph">
-      <style>
+    <main id="app">
+      <template id="my-paragraph">
+        <style>
         p {
           color: white;
           background-color: #666;
           padding: 5px;
         }
-      </style>
-      <p><slot name="my-text">Texte par défaut</slot></p>
-    </template>
-    <my-paragraph></my-paragraph>
-    <my-paragraph><div slot="my-text">Hello</div></my-paragraph>
+        </style>
+        <p><slot name="my-text">Texte par défaut</slot></p>
+      </template>
+      <my-paragraph></my-paragraph>
+      <my-paragraph><div slot="my-text">Hello</div></my-paragraph>
 
+      <template id="template-background-img">
+        <style>
+          .background-img {
+            background-color: black;
+          }
+        </style>
+
+        <div class="background-img">Hello</div>
+        <slot name="content"> child go here </slot>
+      </template>
+
+      <background-img></background-img>
+
+    </main>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
