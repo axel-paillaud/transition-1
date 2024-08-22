@@ -1,13 +1,31 @@
 :root {
-    --grass-100: "#CCD8AD";
-    --grass-200: "#B2C67C";
-    --grass-300: "#6C7C41";
-    --grass-400: "#495B19";
-    --grass-500: "#242C1C";
-    --sea-100: "#C3E2E8";
-    --sea-200: "#6CA7B0";
-    --sea-300: "#27636D";
-    --sea-400: "#21525A";
-    --sea-500: "#153339";
-    --ivoire: "#DCDFD4";
+    --grass-100: #CCD8AD;
+    --grass-200: #B2C67C;
+    --grass-300: #6C7C41;
+    --grass-400: #495B19;
+    --grass-500: #242C1C;
+    --sea-100: #C3E2E8;
+    --sea-200: #6CA7B0;
+    --sea-300: #27636D;
+    --sea-400: #21525A;
+    --sea-500: #153339;
+    --ivoire: #DCDFD4;
+}
+
+body, h1, h2, h3, p {
+    margin: 0;
+}
+
+html {
+    background-color: var(--ivoire); 
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+main {
+    max-width: 1920px;
+    height: 100%;
 }
