@@ -9,6 +9,20 @@
   <body>
     <h1>Hello !</h1>
     <div id="app"></div>
+
+    <template id="my-paragraph">
+      <style>
+        p {
+          color: white;
+          background-color: #666;
+          padding: 5px;
+        }
+      </style>
+      <p><slot name="my-text">Texte par défaut</slot></p>
+    </template>
+    <my-paragraph></my-paragraph>
+    <my-paragraph><div slot="my-text">Hello</div></my-paragraph>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
