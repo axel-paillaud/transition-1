@@ -9,27 +9,8 @@
   <body>
     <main id="app">
 
-      <template id="template-background-img">
-        <style>
-          .background-img {
-            background-color: grey;
-            height: 100%;
-          }
-        </style>
-
-        <div class="background-img">
-          <slot name="content"> child go here </slot>
-        </div>
-      </template>
-
-      <template id="template-img">
-        <picture>
-          <img src="#" alt="First photo" />
-        </picture>
-      </template>
-
       <background-img>
-        <img-component slot="content"></img-component>
+        <photo-img></photo-img>
       </background-img>
 
     </main>
