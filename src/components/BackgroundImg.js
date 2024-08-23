@@ -10,10 +10,21 @@ template.innerHTML = `
     align-items: center;
 }
 
+.background-content {
+    background-color: var(--ivoire);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 696px;
+}
+
 </style>
 
 <div class="background-img">
-    <slot>child go here </slot>
+    <div class="background-content">
+        <slot></slot>
+    </div>
 </div>
 
 `
