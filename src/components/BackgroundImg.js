@@ -5,7 +5,11 @@ template.innerHTML = `
 .background-img {
     background-color: grey;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 </style>
 
 <div class="background-img">
