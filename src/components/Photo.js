@@ -1,4 +1,4 @@
-import germanPhoto from "/images/allemagne-1920.avif";
+import germanyPhoto from "/images/allemagne-1920.avif";
 
 const template = document.createElement("template");
 
@@ -8,7 +8,7 @@ template.innerHTML = `
 </style>
 
 <picture>
-    <img src="${germanPhoto}" alt="First photo" />
+    <img src="${germanyPhoto}" alt="First photo" />
 </picture>
 `
 
