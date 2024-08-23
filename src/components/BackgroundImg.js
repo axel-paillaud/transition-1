@@ -1,3 +1,5 @@
+import germany1920Avif from "/images/germany-1920.avif";
+
 const template = document.createElement("template");
 
 template.innerHTML = `
@@ -8,6 +10,9 @@ template.innerHTML = `
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(${germany1920Avif});
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .background-content {
