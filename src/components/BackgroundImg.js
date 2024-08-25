@@ -22,7 +22,7 @@ template.innerHTML = `
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(1px);
+    /* filter: blur(1px); */
     z-index: 10;
 }
 
