@@ -1,4 +1,5 @@
 import germany1920Avif from "/images/germany-1920.avif";
+import germany19201280Avif from "/images/germany-flip-1920-1280.avif";
 
 const template = document.createElement("template");
 
@@ -10,9 +11,27 @@ template.innerHTML = `
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(${germany1920Avif});
+}
+
+.background-img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(${germany19201280Avif});
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    filter: blur(1px);
+    z-index: 10;
+}
+
+.background-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--grass-500);
+    opacity: 0.6;
+    z-index: 12;
 }
 
 .background-content {
@@ -22,6 +41,8 @@ template.innerHTML = `
     justify-content: center;
     align-items: center;
     height: 696px;
+    position: relative;
+    z-index: 15;
 }
 
 </style>
