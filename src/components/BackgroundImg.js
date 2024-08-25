@@ -5,15 +5,16 @@ const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
-.background-img {
+.background-container {
     background-color: grey;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.background-img::before {
+.background-img {
     content: "";
     position: absolute;
     inset: 0;
@@ -25,7 +26,7 @@ template.innerHTML = `
     z-index: 10;
 }
 
-.background-img::after {
+.background-img::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -47,7 +48,8 @@ template.innerHTML = `
 
 </style>
 
-<div class="background-img">
+<div class="background-container">
+    <div class="background-img"></div>
     <div class="background-content">
         <slot></slot>
     </div>
