@@ -65,6 +65,7 @@ main {
 
 .nav-container {
     position: absolute;
+    z-index: 30;
     right: 64px;
     top: 52px;
 }

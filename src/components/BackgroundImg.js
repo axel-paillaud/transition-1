@@ -65,6 +65,19 @@ export default class BackgroundImg extends HTMLElement {
         shadowRoot.appendChild(template.content.cloneNode(true));
 
     }
+
+    connectedCallback() {
+        this.addEventListener('nav-1', this.switchToFirstPicture);
+        this.addEventListener('nav-2', this.switchToSecondPicture);
+    }
+
+    switchToFirstPicture(event) {
+        console.log(event);
+    }
+
+    switchToSecondPicture(event) {
+        console.log(event);
+    }
 }
 
 customElements.define("background-img", BackgroundImg);
