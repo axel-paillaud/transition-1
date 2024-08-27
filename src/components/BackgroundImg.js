@@ -1,12 +1,15 @@
 import germany1920Avif from "/images/germany-1920.avif";
 import germany19201280Avif from "/images/germany-flip-1920-1280.avif";
+import germanyPhoto from "/images/germany-768.avif";
 
 const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
 .background-container {
-    background-color: grey;
+    background-image: url(${germany19201280Avif});
+    background-size: cover;
+    background-position: center;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -14,16 +17,14 @@ template.innerHTML = `
     position: relative;
 }
 
-.background-img {
+/* Layer of background img */
+.background-container::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url(${germany19201280Avif});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    /* filter: blur(1px); */
-    z-index: 10;
+    background-color: var(--grass-500);
+    opacity: 0.6;
+    z-index: 15;
 }
 
 .background-img::before {
@@ -32,7 +33,21 @@ template.innerHTML = `
     inset: 0;
     background-color: var(--grass-500);
     opacity: 0.6;
-    z-index: 12;
+    z-index: 15;
+}
+
+.background-img {
+    position: absolute;
+    background-image: url(${germany19201280Avif});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* filter: blur(1px); */
+    z-index: 20;
+    height: 620px;
+    width: 465px;
+    transform: rotate(-90deg);
+    animation: background-rotate 1.5s forwards;
 }
 
 .background-content {
@@ -44,6 +59,22 @@ template.innerHTML = `
     height: 696px;
     position: relative;
     z-index: 15;
+    overflow: hidden;
+}
+
+/* Animation */
+
+@keyframes background-rotate {
+    from {
+        height: 620px; 
+        width: 465px;
+        transform: rotate(-90deg);
+    }
+    to {
+        width: 1536px; 
+        height: 951px;
+        transform: rotate(0deg);
+    }
 }
 
 </style>

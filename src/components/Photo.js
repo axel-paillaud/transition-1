@@ -9,12 +9,20 @@ template.innerHTML = `
 }
 
 picture {
+    display: block;
+}
+
+img {
+    display: block;
+}
+
+picture {
 }
 </style>
 
 <div class="photo-container">
     <picture>
-        <img src="${germanyPhoto}" alt="First photo" width="620"/>
+        <img src="${germanyPhoto}" alt="First photo" width="620" height:"465"/>
     </picture>
     <slot></slot>
 </div>
