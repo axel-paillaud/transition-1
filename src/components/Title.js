@@ -8,6 +8,7 @@ template.innerHTML = `
     font-size: 128px;
     color: var(--grass-500);
     position: absolute;
+    z-index: 10;
     left: 64px;
     top: 0;
 }

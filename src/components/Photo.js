@@ -4,12 +4,20 @@ const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
+.photo-container {
+    position: relative;
+}
 
+picture {
+}
 </style>
 
-<picture>
-    <img src="${germanyPhoto}" alt="First photo" width="620"/>
-</picture>
+<div class="photo-container">
+    <picture>
+        <img src="${germanyPhoto}" alt="First photo" width="620"/>
+    </picture>
+    <slot></slot>
+</div>
 `
 
 export default class PhotoImg extends HTMLElement {

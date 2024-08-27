@@ -2,10 +2,15 @@ const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
-
+.description-container {
+    font-family: Poppins;
+}
 </style>
 
-<h1>Allemagne</h1>
+<div class="description-container">
+    <p>Axel & Leila - juillet 2020</p>
+    <p>Lac de Plitvice</p>
+</div>
 `
 
 export default class ImgDescription extends HTMLElement {
@@ -18,4 +23,4 @@ export default class ImgDescription extends HTMLElement {
     }
 }
 
-customElements.define("img-descrpiption", ImgDescription);
+customElements.define("img-description", ImgDescription);

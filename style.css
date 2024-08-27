@@ -68,3 +68,10 @@ main {
     right: 64px;
     top: 52px;
 }
+
+
+.img-desc-container {
+    position: absolute;
+    right: -256px;
+    bottom: 0;
+}
