@@ -2,10 +2,17 @@ const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
-
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 </style>
 
-<h1>Allemagne</h1>
+<nav class="nav">
+    <button id="btn-1">Picture 1</button>
+    <button>Picture 2</button>
+</nav>
 `
 
 export default class ImgNav extends HTMLElement {
@@ -20,3 +27,7 @@ export default class ImgNav extends HTMLElement {
 }
 
 customElements.define("img-nav", ImgNav);
+
+document.getElementById("btn-1").addEventListener('click', () => {
+    hello();
+});

@@ -62,3 +62,9 @@ main {
     height: 100%;
     margin: 0 auto;
 }
+
+.nav-container {
+    position: absolute;
+    right: 64px;
+    top: 52px;
+}
