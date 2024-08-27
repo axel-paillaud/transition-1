@@ -1,5 +1,3 @@
-import germanyPhoto from "/images/germany-768.avif";
-
 const template = document.createElement("template");
 
 template.innerHTML = `
@@ -7,20 +5,18 @@ template.innerHTML = `
 
 </style>
 
-<picture>
-    <img src="${germanyPhoto}" alt="First photo" width="620"/>
-</picture>
+<h1>Allemagne</h1>
 `
 
-export default class PhotoImg extends HTMLElement {
+export default class ImgNav extends HTMLElement {
     constructor() {
         super();
 
         const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(
             template.content.cloneNode(true),
         );
+
     }
 }
 
-customElements.define("photo-img", PhotoImg);
-
+customElements.define("img-nav", ImgNav);
