@@ -61,9 +61,8 @@ export default class BackgroundImg extends HTMLElement {
     constructor() {
         super();
 
-        const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(
-            template.content.cloneNode(true),
-        );
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        shadowRoot.appendChild(template.content.cloneNode(true));
 
     }
 }

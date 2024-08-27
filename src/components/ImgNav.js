@@ -19,15 +19,20 @@ export default class ImgNav extends HTMLElement {
     constructor() {
         super();
 
-        const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(
-            template.content.cloneNode(true),
-        );
+        const shadowRoot = this.attachShadow({mode: "open" });
+        shadowRoot.appendChild(template.content.cloneNode(true));
 
+        this.button = shadowRoot.getElementById("btn-1");
     }
+
+    connectedCallback() {
+        this.shadowRoot.getElementById("btn-1").addEventListener('click', () => {
+            console.log("hello, world");
+            console.log(this.button);
+        });
+    }
+
 }
 
 customElements.define("img-nav", ImgNav);
 
-document.getElementById("btn-1").addEventListener('click', () => {
-    hello();
-});
