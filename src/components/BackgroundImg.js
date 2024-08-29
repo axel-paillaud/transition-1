@@ -98,11 +98,16 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     switchToFirstPicture(event) {
-        console.log(event);
+        this.render();
     }
 
     switchToSecondPicture(event) {
-        console.log(event);
+        this.render();
+    }
+
+    render() {
+        this.shadowRoot.innerHTML = '';
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 }
 
