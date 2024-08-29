@@ -30,7 +30,7 @@ template.innerHTML = `
 .title {
     position: relative;
     top: 141px;
-    animation: 0.9s slide-up cubic-bezier(.17,.84,.44,1) forwards;
+    animation: 0.9s slide-up 0.75s cubic-bezier(.17,.84,.44,1) forwards;
 }
 
 @keyframes slide-up {
