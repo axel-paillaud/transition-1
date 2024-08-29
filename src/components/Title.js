@@ -12,10 +12,20 @@ template.innerHTML = `
     left: 64px;
     top: 0;
 }
+
+.container-mask {
+    overflow: hidden; 
+    display: inline;
+}
+
+.char {
+    position: relative;
+}
+
 </style>
 
 <h1 id="title" class="title">
-    Allemagne
+    Autriche
 </h1>
 `
 
@@ -37,6 +47,9 @@ export default class Title extends HTMLElement {
         
         splittedText.forEach((span) => {
             const spanMask = document.createElement('span');
+            spanMask.classList.add('container-mask');
+            span.classList.add('char');
+
             spanMask.appendChild(span);
             this.headingTitle.appendChild(spanMask);
         });
