@@ -53,7 +53,6 @@ export default class Title extends HTMLElement {
             spanMask.appendChild(span);
             this.headingTitle.appendChild(spanMask);
         });
-
     }
 }
 
