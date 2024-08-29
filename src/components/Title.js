@@ -4,13 +4,14 @@ template.innerHTML = `
 <style>
 .title-container {
     font-family: Branch;
-    margin: 0;
+    margin: 16px 0 0 0;
     font-size: 128px;
     color: var(--grass-500);
     position: absolute;
     z-index: 10;
     left: 64px;
     top: 0;
+    line-height: 1.3;
 }
 
 .container-mask {
@@ -28,6 +29,13 @@ template.innerHTML = `
 
 .title {
     position: relative;
+    top: 141px;
+    animation: 0.9s slide-up cubic-bezier(.17,.84,.44,1) forwards;
+}
+
+@keyframes slide-up {
+    from { top: 141px; }
+    to { top: 0px; }
 }
 </style>
 
