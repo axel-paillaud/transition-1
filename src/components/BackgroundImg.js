@@ -46,7 +46,7 @@ template.innerHTML = `
     width: 100%;
     z-index: 15;
     height: 0px;
-    animation: layer-upward 0.9s cubic-bezier(.96,.14,.15,.86) forwards;
+    animation: layer-upward 0.9s cubic-bezier(.70,.14,.15,.86) forwards;
     /* height: 696px; */
 }
 
