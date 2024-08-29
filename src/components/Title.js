@@ -14,7 +14,9 @@ template.innerHTML = `
 }
 </style>
 
-<h1 class="title">Allemagne</h1>
+<h1 id="title" class="title">
+    Allemagne
+</h1>
 `
 
 export default class Title extends HTMLElement {

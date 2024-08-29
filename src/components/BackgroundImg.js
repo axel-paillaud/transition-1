@@ -24,9 +24,11 @@ template.innerHTML = `
     background-position: center;
     /* filter: blur(1px); */
     z-index: 10;
-    width: 620px;
-    height: 465px;
-    animation: background-forward 0.9s cubic-bezier(.79,.14,.15,.86) forwards;
+    /* width: 620px; */
+    /* height: 465px; */
+    /* animation: background-forward 0.9s cubic-bezier(.79,.14,.15,.86) forwards; */
+    width: 100%;
+    height: 100%;
 }
 
 .background-img::before {
@@ -41,10 +43,11 @@ template.innerHTML = `
 .mask-layer {
     position: absolute;
     background-color: var(--ivoire);
-    height: 0px;
     width: 100%;
     z-index: 15;
-    animation: layer-upward 0.9s cubic-bezier(.96,.14,.15,.86) forwards;
+    /* height: 0px; */
+    /* animation: layer-upward 0.9s cubic-bezier(.96,.14,.15,.86) forwards; */
+    height: 696px;
 }
 
 .background-content {
