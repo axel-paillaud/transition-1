@@ -36,8 +36,9 @@ template.innerHTML = `
     position: absolute;
     inset: 0;
     background-color: var(--grass-500);
-    opacity: 0.6;
+    opacity: 0;
     z-index: 12;
+    animation: opacity-transition 0.9s ease forwards;
 }
 
 .mask-layer {
@@ -68,6 +69,11 @@ template.innerHTML = `
 @keyframes layer-upward {
     from { height: 0px; }
     to { height: 696px; }
+}
+
+@keyframes opacity-transition {
+    from { opacity: 0; }
+    to { opacity: 0.6 }
 }
 
 </style>
