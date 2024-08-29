@@ -44,7 +44,7 @@ template.innerHTML = `
     height: 0px;
     width: 100%;
     z-index: 15;
-    animation: layer-upward 0.9s cubic-bezier(.77,0,.18,1) forwards;
+    animation: layer-upward 0.9s cubic-bezier(.96,.14,.15,.86) forwards;
 }
 
 .background-content {
