@@ -1,5 +1,4 @@
 import germany1920Avif from "/images/germany-1920.avif";
-import germany19201280Avif from "/images/germany-flip-1920-1280.avif";
 import germanyPhoto from "/images/germany-768.avif";
 
 const template = document.createElement("template");
@@ -7,7 +6,7 @@ const template = document.createElement("template");
 template.innerHTML = `
 <style>
 .background-container {
-    background-image: url(${germany19201280Avif});
+    background-image: url(${germany1920Avif});
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -38,7 +37,7 @@ template.innerHTML = `
 
 .background-img {
     position: absolute;
-    background-image: url(${germany19201280Avif});
+    background-image: url(${germany1920Avif});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -46,8 +45,8 @@ template.innerHTML = `
     z-index: 20;
     height: 620px;
     width: 465px;
-    transform: rotate(-90deg);
     animation: background-rotate 1.5s forwards;
+    display: none;
 }
 
 .background-content {
