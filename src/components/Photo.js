@@ -9,6 +9,11 @@ template.innerHTML = `
 }
 
 picture {
+    display: block;
+}
+
+img {
+    display: block;
 }
 </style>
 

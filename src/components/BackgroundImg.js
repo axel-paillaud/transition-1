@@ -1,12 +1,11 @@
 import germany1920Avif from "/images/germany-1920.avif";
-import germany19201280Avif from "/images/germany-flip-1920-1280.avif";
 
 const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
 .background-container {
-    background-color: grey;
+    background-color: var(--ivoire);
     height: 100%;
     display: flex;
     justify-content: center;
@@ -15,15 +14,19 @@ template.innerHTML = `
 }
 
 .background-img {
-    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    inset: 0;
-    background-image: url(${germany19201280Avif});
+    background-image: url(${germany1920Avif});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     /* filter: blur(1px); */
     z-index: 10;
+    width: 620px;
+    height: 465px;
+    animation: background-forward 0.9s cubic-bezier(.79,.14,.15,.86) forwards;
 }
 
 .background-img::before {
@@ -35,8 +38,16 @@ template.innerHTML = `
     z-index: 12;
 }
 
-.background-content {
+.mask-layer {
+    position: absolute;
     background-color: var(--ivoire);
+    height: 0px;
+    width: 100%;
+    z-index: 15;
+    animation: layer-upward 0.9s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+.background-content {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -46,10 +57,22 @@ template.innerHTML = `
     z-index: 15;
 }
 
+@keyframes background-forward {
+    from { width: 620px; height: 465px; }
+    to { width: 100%; height: 100%; }
+}
+
+@keyframes layer-upward {
+    from { height: 0px; }
+    to { height: 696px; }
+}
+
 </style>
 
 <div class="background-container">
-    <div class="background-img"></div>
+    <div class="background-img">
+        <div class="mask-layer"></div>
+    </div>
     <div class="background-content">
         <slot></slot>
     </div>
