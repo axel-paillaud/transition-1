@@ -25,7 +25,35 @@ export default class Title extends HTMLElement {
 
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(template.content.cloneNode(true));
+
+        this.headingTitle = shadowRoot.getElementById("title");
+    }
+
+    connectedCallback() {
+        const string = this.headingTitle.innerText;
+        const splittedText = splitText(string); 
+
+        this.headingTitle.innerHTML = '';
+        
+        splittedText.forEach((span) => {
+            const spanMask = document.createElement('span');
+            spanMask.appendChild(span);
+            this.headingTitle.appendChild(spanMask);
+        });
+
     }
 }
 
 customElements.define("country-title", Title);
+
+function splitText(string) {
+    const splittedText = []; 
+
+    string.split('').forEach((letter) => {
+        const span = document.createElement('span');
+        span.innerHTML = letter;
+        splittedText.push(span);
+    });
+
+    return splittedText;
+}
