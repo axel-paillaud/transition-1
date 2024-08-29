@@ -2,8 +2,15 @@ const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
+p {
+    margin: 0;
+}
+
 .description-container {
     font-family: Poppins;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 </style>
 
