@@ -8,7 +8,7 @@ template.innerHTML = `
     position: relative;
 }
 
-.container-mask {
+.mask-container {
     overflow: hidden;
 }
 
