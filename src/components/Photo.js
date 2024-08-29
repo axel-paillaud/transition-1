@@ -47,6 +47,24 @@ export default class PhotoImg extends HTMLElement {
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(template.content.cloneNode(true));
     }
+
+    connectedCallback() {
+        document.addEventListener('nav-1', (event) => this.switchToFirstPicture(event));
+        document.addEventListener('nav-2', (event) => this.switchToSecondPicture(event));
+    }
+
+    disconnectedCallback() {
+        console.log("i am disconnected");
+    }
+
+    switchToFirstPicture(event) {
+        console.log(event);
+    }
+
+    switchToSecondPicture(event) {
+        console.log(event);
+    }
+
 }
 
 customElements.define("photo-img", PhotoImg);

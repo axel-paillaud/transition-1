@@ -99,8 +99,12 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     connectedCallback() {
-        this.addEventListener('nav-1', this.switchToFirstPicture);
-        this.addEventListener('nav-2', this.switchToSecondPicture);
+        document.addEventListener('nav-1', (event) => this.switchToFirstPicture(event));
+        document.addEventListener('nav-2', (event) => this.switchToSecondPicture(event));
+    }
+
+    disconnectedCallback() {
+        console.log("i am disconnected");
     }
 
     switchToFirstPicture(event) {
