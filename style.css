@@ -48,6 +48,10 @@ body, h1, h2, h3, p {
     margin: 0;
 }
 
+#app {
+    display: none;
+}
+
 html {
     background-color: var(--ivoire); 
     height: 100%;
@@ -61,6 +65,13 @@ main {
     max-width: 1536px;
     height: 100%;
     margin: 0 auto;
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .nav-container {
