@@ -187,8 +187,7 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     switchBackground(event) {
-        const countryId = parseInt(event.detail.id);
-        const newCountry = findCountryById(countryId);
+        const newCountry = findCountryById(parseInt(event.detail.id));
         this.triggerLayerRemoval();
         this.updateBackground(newCountry);
     }
