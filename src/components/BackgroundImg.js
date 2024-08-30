@@ -41,11 +41,11 @@ template.innerHTML = `
     /* height: 100%; */
 }
 
-.background-img.austria {
+.background-img[data-country="austria"] {
     background-image: url(${austria1920Avif});
 }
 
-.background-img.germany {
+.background-img[data-country="germany"] {
     background-image: url(${germany1920Avif});
 }
 
@@ -59,11 +59,11 @@ template.innerHTML = `
     animation: opacity-transition 0.9s ease forwards;
 }
 
-.background-img.austria::before {
+.background-img[data-country="austria"]::before {
     background-color: var(--sea-500);
 }
 
-.background-img.germany::before {
+.background-img[data-country="germany"]::before {
     background-color: var(--grass-500);
 }
 
@@ -80,11 +80,11 @@ template.innerHTML = `
     animation: fade-out 1s ease forwards;
 }
 
-.background-img.austria::after {
+.background-img[data-country="austria"]::after {
     background-image: url(${germany1920Avif});
 }
 
-.background-img.germany::after {
+.background-img[data-country="germany"]::after {
     background-image: url(${austria1920Avif});
 }
 
@@ -197,7 +197,7 @@ export default class BackgroundImg extends HTMLElement {
 
     updateBackground(newCountry) {
         const newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
-        newBackgroundImg.classList.add(newCountry.name);
+        newBackgroundImg.setAttribute('data-country', newCountry.name);
 
         setTimeout(() => {
             this.backgroundImg.remove();
