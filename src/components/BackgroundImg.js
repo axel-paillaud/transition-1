@@ -6,7 +6,7 @@ const animDelay = {
     removeLayer: {
         delay: "0.35s", 
         duration: "0.5s", 
-        total: "850" 
+        totalInMs: 850 
     },
 };
 
@@ -141,14 +141,23 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     switchBackground(event) {
-        let layerMask = this.backgroundImg.firstElementChild;
-        let newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
+        this.triggerLayerRemoval();
+        this.updateBackground();
+    }
 
+    triggerLayerRemoval() {
+        // Add class to trigger layer removal animation
+        const layerMask = this.backgroundImg.firstElementChild;
         layerMask.classList.add('remove-layer');
+    }
+
+    updateBackground() {
+        const newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
+
         setTimeout(() => {
             this.backgroundImg.remove();
             this.backgroundImg = newBackgroundImg;
-        }, animDelay.removeLayer.total);
+        }, animDelay.removeLayer.totalInMs);
 
         this.backgroundContainer.appendChild(newBackgroundImg);
     }
