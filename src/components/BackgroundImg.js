@@ -70,6 +70,11 @@ template.innerHTML = `
     to { height: 696px; }
 }
 
+@keyframes layer-full {
+    from { height: 696px; }
+    to { height: 100%; }
+}
+
 @keyframes opacity-transition {
     from { opacity: 0; }
     to { opacity: 0.6 }
