@@ -53,18 +53,10 @@ export default class PhotoImg extends HTMLElement {
     }
 
     connectedCallback() {
-        this.addEventListeners();
-    }
-
-    disconnectedCallback() {
-        this.removeEventListeners();
-    }
-
-    addEventListeners() {
         document.addEventListener('switchImg', (event) => this.switchPhoto(event));
     }
 
-    removeEventListeners() {
+    disconnectedCallback() {
         document.removeEventListener('switchImg', (event) => this.switchPhoto(event));
     }
 
