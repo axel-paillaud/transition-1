@@ -12,8 +12,8 @@ const animDelay = {
 };
 
 const countryList = [
-    { id: 1, name: "austria", frName: "Autriche" },
-    { id: 2, name: "germany", frName: "Allemagne" },
+    { id: 1, name: "germany", frName: "Allemagne" },
+    { id: 2, name: "austria", frName: "Autriche" },
 ];
 
 template.innerHTML = `
@@ -60,6 +60,14 @@ template.innerHTML = `
     opacity: 0;
     z-index: 12;
     animation: opacity-transition 0.9s ease forwards;
+}
+
+.background-img.austria::before {
+    background-color: var(--sea-500);
+}
+
+.background-img.germany::before {
+    background-color: var(--grass-500);
 }
 
 /* Old background-img */
@@ -179,9 +187,10 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     switchBackground(event) {
-        console.log(event.detail.id);
+        const countryId = parseInt(event.detail.id);
+        const newCountry = findCountryById(countryId);
         this.triggerLayerRemoval();
-        this.updateBackground();
+        this.updateBackground(newCountry);
     }
 
     triggerLayerRemoval() {
@@ -190,8 +199,9 @@ export default class BackgroundImg extends HTMLElement {
         layerMask.classList.add('remove-layer');
     }
 
-    updateBackground() {
+    updateBackground(newCountry) {
         const newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
+        newBackgroundImg.classList.add(newCountry.name);
 
         setTimeout(() => {
             this.backgroundImg.remove();
@@ -203,3 +213,7 @@ export default class BackgroundImg extends HTMLElement {
 }
 
 customElements.define("background-img", BackgroundImg);
+
+function findCountryById(id) {
+    return countryList.find((item) => item.id === id);
+}
