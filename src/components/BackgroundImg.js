@@ -49,6 +49,17 @@ template.innerHTML = `
     animation: opacity-transition 0.9s ease forwards;
 }
 
+/* Old background-img */
+.background-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 11;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .mask-layer {
     position: absolute;
     background-color: var(--ivoire);
