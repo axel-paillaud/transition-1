@@ -77,7 +77,7 @@ template.innerHTML = `
     background-size: cover;
     background-position: center;
     opacity: 1;
-    animation: fade-out 1s ease forwards;
+    animation: fade-out 1.2s ease forwards;
 }
 
 .background-img[data-country="austria"]::after {
