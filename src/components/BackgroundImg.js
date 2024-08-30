@@ -39,6 +39,14 @@ template.innerHTML = `
     /* height: 100%; */
 }
 
+.background-img.austria {
+    background-image: url(${austria1920Avif});
+}
+
+.background-img.germany {
+    background-image: url(${germany1920Avif});
+}
+
 .background-img::before {
     content: "";
     position: absolute;
@@ -58,6 +66,16 @@ template.innerHTML = `
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    opacity: 1;
+    animation: fade-out 1s ease forwards;
+}
+
+.background-img.austria::after {
+    background-image: url(${germany1920Avif});
+}
+
+.background-img.germany::after {
+    background-image: url(${austria1920Avif});
 }
 
 .mask-layer {
@@ -107,6 +125,11 @@ template.innerHTML = `
 @keyframes opacity-transition {
     from { opacity: 0; }
     to { opacity: 0.6 }
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to {opacity: 0; }
 }
 
 </style>
