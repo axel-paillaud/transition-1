@@ -50,6 +50,11 @@ template.innerHTML = `
     /* height: 696px; */
 }
 
+.mask-layer.remove-layer {
+    height: 696px;
+    animation: 0.5s layer-full 0.3s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
 .background-content {
     width: 100%;
     display: flex;
@@ -82,9 +87,9 @@ template.innerHTML = `
 
 </style>
 
-<div class="background-container">
-    <div class="background-img">
-        <div class="mask-layer"></div>
+<div data-bg-container class="background-container">
+    <div data-bg-img class="background-img">
+        <div data-bg-layer class="mask-layer"></div>
     </div>
     <div class="background-content">
         <slot></slot>
@@ -100,6 +105,9 @@ export default class BackgroundImg extends HTMLElement {
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(template.content.cloneNode(true));
 
+        this.backgroundContainer = shadowRoot.querySelector("[data-bg-container]");
+        this.backgroundImg = shadowRoot.querySelector("[data-bg-img]");
+        this.backgroundLayer = shadowRoot.querySelector("[data-bg-layer]");
     }
 
     connectedCallback() {
@@ -112,7 +120,16 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     switchToFirstPicture(event) {
-        this.render();
+        let newBackgroundImg = this.backgroundImg.cloneNode(true);
+
+        this.backgroundLayer.classList.add('remove-layer');
+        setTimeout(() => {
+            this.backgroundImg.remove();
+            this.backgroundImg = newBackgroundImg;
+            this.backgroundLayer = newBackgroundImg.firstElementChild;
+        }, 800);
+
+        this.backgroundContainer.appendChild(newBackgroundImg);
     }
 
     switchToSecondPicture(event) {
