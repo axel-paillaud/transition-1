@@ -1,4 +1,5 @@
 import germany1920Avif from "/images/germany-1920.avif";
+import austria1920Avif from "/images/austria-1920.avif";
 
 const template = document.createElement("template");
 
