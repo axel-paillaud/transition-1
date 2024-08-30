@@ -1,6 +1,8 @@
 import germany1920Avif from "/images/germany-1920.avif";
 import austria1920Avif from "/images/austria-1920.avif";
 
+import { countryList } from '../data/countryList';
+
 const template = document.createElement("template");
 
 const animDelay = { 
@@ -10,11 +12,6 @@ const animDelay = {
         totalInMs: 850 
     },
 };
-
-const countryList = [
-    { id: 1, name: "germany", frName: "Allemagne" },
-    { id: 2, name: "austria", frName: "Autriche" },
-];
 
 template.innerHTML = `
 <style>
