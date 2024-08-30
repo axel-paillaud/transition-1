@@ -11,6 +11,11 @@ const animDelay = {
     },
 };
 
+const countryList = [
+    { id: 1, name: "austria", frName: "Autriche" },
+    { id: 2, name: "germany", frName: "Allemagne" },
+];
+
 template.innerHTML = `
 <style>
 .background-container {
