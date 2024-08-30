@@ -1,5 +1,4 @@
-import { countryList } from "../data/countryList";
-import findCountryById from "../utils/findCountry";
+import { countryObj } from "../data/country";
 
 const template = document.createElement("template");
 
@@ -35,7 +34,7 @@ img {
     <div data-photo-container class="mask-container">
         <picture data-photo="germany">
             <source srcset="" />
-            <img src="${countryList[0].photo}" alt="First photo" width="620"/>
+            <img src="${countryObj.germany.photo}" alt="First photo" width="620"/>
         </picture>
     </div>
     <slot></slot>
@@ -70,7 +69,7 @@ export default class PhotoImg extends HTMLElement {
     }
 
     switchPhoto(event) {
-        const country = findCountryById(countryList, parseInt(event.detail.id));
+        const country = countryObj[event.detail.country];
         const newPhoto = this.photo.cloneNode(true);
         newPhoto.lastElementChild.src = country.photo;
 

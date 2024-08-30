@@ -10,8 +10,8 @@ template.innerHTML = `
 </style>
 
 <nav class="nav">
-    <button data-id="1">germany id 1</button>
-    <button data-id="2">austria id 2</button>
+    <button data-country="germany">germany</button>
+    <button data-country="austria">austria id 2</button>
 </nav>
 `
 
@@ -22,7 +22,7 @@ export default class ImgNav extends HTMLElement {
         const shadowRoot = this.attachShadow({mode: 'open' });
         shadowRoot.appendChild(template.content.cloneNode(true));
 
-        this.navButtons = shadowRoot.querySelectorAll('[data-id]');
+        this.navButtons = shadowRoot.querySelectorAll('[data-country]');
     }
 
     connectedCallback() {
@@ -43,7 +43,7 @@ export default class ImgNav extends HTMLElement {
 
     triggerSwitchImg(event) {
         const customEvent = new CustomEvent('switchImg', {
-            detail: { id: event.currentTarget.dataset.id },
+            detail: { country: event.target.dataset.country },
             bubbles: true,
             composed: true,
         });

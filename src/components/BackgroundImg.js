@@ -1,8 +1,7 @@
 import germany1920Avif from "/images/germany-1920.avif";
 import austria1920Avif from "/images/austria-1920.avif";
 
-import findCountryById from "../utils/findCountry";
-import { countryList } from '../data/countryList';
+import { countryObj } from '../data/country';
 
 const template = document.createElement("template");
 
@@ -185,7 +184,7 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     switchBackground(event) {
-        const newCountry = findCountryById(countryList, parseInt(event.detail.id));
+        const newCountry = countryObj[event.detail.country]; 
         this.triggerLayerRemoval();
         this.updateBackground(newCountry);
     }
