@@ -2,6 +2,14 @@ import germany1920Avif from "/images/germany-1920.avif";
 
 const template = document.createElement("template");
 
+const animDelay = { 
+    removeLayer: {
+        delay: "0.35s", 
+        duration: "0.5s", 
+        total: "850" 
+    },
+};
+
 template.innerHTML = `
 <style>
 .background-container {
@@ -52,7 +60,11 @@ template.innerHTML = `
 
 .mask-layer.remove-layer {
     height: 696px;
-    animation: 0.5s layer-full 0.3s cubic-bezier(.22,.61,.36,1) forwards;
+    animation-name: layer-full;
+    animation-duration: ${animDelay.removeLayer.duration};
+    animation-delay: ${animDelay.removeLayer.delay};
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.22,.61,.36,1);
 }
 
 .background-content {
@@ -129,7 +141,7 @@ export default class BackgroundImg extends HTMLElement {
             this.backgroundImg.remove();
             this.backgroundImg = newBackgroundImg;
             this.backgroundLayer = newBackgroundImg.firstElementChild;
-        }, 800);
+        }, 850);
 
         this.backgroundContainer.appendChild(newBackgroundImg);
     }
