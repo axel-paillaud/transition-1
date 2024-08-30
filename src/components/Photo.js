@@ -58,11 +58,9 @@ export default class PhotoImg extends HTMLElement {
     }
 
     switchToFirstPicture(event) {
-        console.log(event);
     }
 
     switchToSecondPicture(event) {
-        console.log(event);
     }
 
 }

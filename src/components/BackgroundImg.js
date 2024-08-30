@@ -131,16 +131,15 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     addEventListeners() {
-        document.addEventListener('nav-1', (event) => this.switchBackground(event));
-        document.addEventListener('nav-2', (event) => this.switchBackground(event));
+        document.addEventListener('switchImg', (event) => this.switchBackground(event));
     }
 
     removeEventListeners() {
-        document.removeEventListener('nav-1', (event) => this.switchBackground(event));
-        document.removeEventListener('nav-2', (event) => this.switchBackground(event));
+        document.removeEventListener('switchImg', (event) => this.switchBackground(event));
     }
 
     switchBackground(event) {
+        console.log(event.detail.id);
         this.triggerLayerRemoval();
         this.updateBackground();
     }
