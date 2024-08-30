@@ -141,7 +141,7 @@ export default class BackgroundImg extends HTMLElement {
             this.backgroundImg.remove();
             this.backgroundImg = newBackgroundImg;
             this.backgroundLayer = newBackgroundImg.firstElementChild;
-        }, 850);
+        }, animDelay.removeLayer.total);
 
         this.backgroundContainer.appendChild(newBackgroundImg);
     }
