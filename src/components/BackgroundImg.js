@@ -119,20 +119,30 @@ export default class BackgroundImg extends HTMLElement {
 
         this.backgroundContainer = shadowRoot.querySelector("[data-bg-container]");
         this.backgroundImg = shadowRoot.querySelector("[data-bg-img]");
+        this.backgroundImgTemplate = this.backgroundImg.cloneNode(true);
     }
 
     connectedCallback() {
-        document.addEventListener('nav-1', (event) => this.switchToFirstPicture(event));
-        document.addEventListener('nav-2', (event) => this.switchToSecondPicture(event));
+        this.addEventListeners();
     }
 
     disconnectedCallback() {
-        console.log("i am disconnected");
+        this.removeEventListeners();
     }
 
-    switchToFirstPicture(event) {
-        let newBackgroundImg = this.backgroundImg.cloneNode(true);
+    addEventListeners() {
+        document.addEventListener('nav-1', (event) => this.switchBackground(event));
+        document.addEventListener('nav-2', (event) => this.switchBackground(event));
+    }
+
+    removeEventListeners() {
+        document.removeEventListener('nav-1', (event) => this.switchBackground(event));
+        document.removeEventListener('nav-2', (event) => this.switchBackground(event));
+    }
+
+    switchBackground(event) {
         let layerMask = this.backgroundImg.firstElementChild;
+        let newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
 
         layerMask.classList.add('remove-layer');
         setTimeout(() => {
@@ -141,15 +151,6 @@ export default class BackgroundImg extends HTMLElement {
         }, animDelay.removeLayer.total);
 
         this.backgroundContainer.appendChild(newBackgroundImg);
-    }
-
-    switchToSecondPicture(event) {
-        this.render();
-    }
-
-    render() {
-        this.shadowRoot.innerHTML = '';
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 }
 
