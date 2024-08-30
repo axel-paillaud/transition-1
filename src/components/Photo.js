@@ -1,4 +1,5 @@
 import { countryList } from "../data/countryList";
+import findCountryById from "../utils/findCountry";
 
 const template = document.createElement("template");
 
@@ -69,8 +70,7 @@ export default class PhotoImg extends HTMLElement {
     }
 
     switchPhoto(event) {
-        const countryId = parseInt(event.detail.id);
-        const country = countryList.find((item) => item.id === countryId); 
+        const country = findCountryById(countryList, parseInt(event.detail.id));
         const newPhoto = this.photo.cloneNode(true);
         newPhoto.lastElementChild.src = country.photo;
 
