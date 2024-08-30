@@ -33,7 +33,6 @@ export default class ImgNav extends HTMLElement {
                 composed: true,
             });
             this.dispatchEvent(customEvent);
-            document.dispatchEvent(customEvent);
         });
 
         this.nav2.addEventListener('click', () => {

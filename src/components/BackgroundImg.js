@@ -5,7 +5,6 @@ const template = document.createElement("template");
 template.innerHTML = `
 <style>
 .background-container {
-    background-color: var(--ivoire);
     height: 100%;
     display: flex;
     justify-content: center;
