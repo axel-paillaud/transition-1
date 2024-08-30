@@ -11,7 +11,7 @@ template.innerHTML = `
 
 <nav class="nav">
     <button data-country="germany">germany</button>
-    <button data-country="austria">austria id 2</button>
+    <button data-country="austria">austria</button>
 </nav>
 `
 
