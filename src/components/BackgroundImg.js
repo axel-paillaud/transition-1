@@ -101,7 +101,7 @@ template.innerHTML = `
 
 <div data-bg-container class="background-container">
     <div data-bg-img class="background-img">
-        <div data-bg-layer class="mask-layer"></div>
+        <div class="mask-layer"></div>
     </div>
     <div class="background-content">
         <slot></slot>
@@ -119,9 +119,6 @@ export default class BackgroundImg extends HTMLElement {
 
         this.backgroundContainer = shadowRoot.querySelector("[data-bg-container]");
         this.backgroundImg = shadowRoot.querySelector("[data-bg-img]");
-
-        // I think remove this one, and setup only inside method
-        this.backgroundLayer = shadowRoot.querySelector("[data-bg-layer]");
     }
 
     connectedCallback() {
@@ -135,12 +132,12 @@ export default class BackgroundImg extends HTMLElement {
 
     switchToFirstPicture(event) {
         let newBackgroundImg = this.backgroundImg.cloneNode(true);
+        let layerMask = this.backgroundImg.firstElementChild;
 
-        this.backgroundLayer.classList.add('remove-layer');
+        layerMask.classList.add('remove-layer');
         setTimeout(() => {
             this.backgroundImg.remove();
             this.backgroundImg = newBackgroundImg;
-            this.backgroundLayer = newBackgroundImg.firstElementChild;
         }, animDelay.removeLayer.total);
 
         this.backgroundContainer.appendChild(newBackgroundImg);
