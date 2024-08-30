@@ -1,4 +1,4 @@
-import germanyPhoto from "/images/germany-768.avif";
+import { countryList } from "../data/countryList";
 
 const template = document.createElement("template");
 
@@ -31,9 +31,10 @@ img {
 </style>
 
 <div class="photo-container">
-    <div class="mask-container">
-        <picture>
-            <img src="${germanyPhoto}" alt="First photo" width="620"/>
+    <div data-photo-container class="mask-container">
+        <picture data-photo="germany">
+            <source srcset="" />
+            <img src="${countryList[0].photo}" alt="First photo" width="620"/>
         </picture>
     </div>
     <slot></slot>
@@ -46,21 +47,37 @@ export default class PhotoImg extends HTMLElement {
 
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(template.content.cloneNode(true));
+
+        this.photo = shadowRoot.querySelector('[data-photo]');
+        this.container = shadowRoot.querySelector('[data-photo-container]');
     }
 
     connectedCallback() {
-        document.addEventListener('nav-1', (event) => this.switchToFirstPicture(event));
-        document.addEventListener('nav-2', (event) => this.switchToSecondPicture(event));
+        this.addEventListeners();
     }
 
     disconnectedCallback() {
-        console.log("i am disconnected");
+        this.removeEventListeners();
     }
 
-    switchToFirstPicture(event) {
+    addEventListeners() {
+        document.addEventListener('switchImg', (event) => this.switchPhoto(event));
     }
 
-    switchToSecondPicture(event) {
+    removeEventListeners() {
+        document.removeEventListener('switchImg', (event) => this.switchPhoto(event));
+    }
+
+    switchPhoto(event) {
+        const countryId = parseInt(event.detail.id);
+        const country = countryList.find((item) => item.id === countryId); 
+        const newPhoto = this.photo.cloneNode(true);
+        newPhoto.lastElementChild.src = country.photo;
+
+        this.photo.remove();
+
+        this.container.appendChild(newPhoto);
+        this.photo = newPhoto;
     }
 
 }
