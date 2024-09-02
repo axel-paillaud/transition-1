@@ -101,9 +101,9 @@ template.innerHTML = `
 .mask-layer.remove-layer {
     height: 696px;
     animation-name: layer-full;
-    /* animation-duration: ${animDelay.removeLayer.duration}; */
-    /* animation-delay: ${animDelay.removeLayer.delay}; */
-    animation-duration: 0.5s;
+    animation-duration: ${animDelay.removeLayer.duration};
+    animation-delay: ${animDelay.removeLayer.delay};
+    /* animation-duration: 0.5s; */
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(.22,.61,.36,1);
 }
@@ -195,6 +195,7 @@ export default class BackgroundImg extends HTMLElement {
 
         // this.backgroundImgMaskLayer.classList.add('remove-layer');
         // currentLayer.classList.add('remove-layer');
+
         currentLayer.animate([
             {height: '696px'},
             {height: '100%'},
