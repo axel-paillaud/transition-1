@@ -101,8 +101,9 @@ template.innerHTML = `
 .mask-layer.remove-layer {
     height: 696px;
     animation-name: layer-full;
-    animation-duration: ${animDelay.removeLayer.duration};
-    animation-delay: ${animDelay.removeLayer.delay};
+    /* animation-duration: ${animDelay.removeLayer.duration}; */
+    /* animation-delay: ${animDelay.removeLayer.delay}; */
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(.22,.61,.36,1);
 }
@@ -186,8 +187,23 @@ export default class BackgroundImg extends HTMLElement {
         // Add class to trigger layer removal animation
         // const layerMask = this.backgroundImg.firstElementChild;
         // layerMask.classList.add('remove-layer');
+        const currentLayer = this.backgroundImgMaskLayer;
 
-        this.backgroundImgMaskLayer.classList.add('remove-layer');
+        /*         setTimeout(() => {
+            currentLayer.classList.add('remove-layer');
+        }, 0); */
+
+        // this.backgroundImgMaskLayer.classList.add('remove-layer');
+        // currentLayer.classList.add('remove-layer');
+        currentLayer.animate([
+            {height: '696px'},
+            {height: '100%'},
+        ], {
+                duration: 500,
+                delay: 350,
+                fill: 'forwards',
+                easing: 'cubic-bezier(.22, .61, .36, 1)' // Application de la courbe de Bézier
+            });
     }
 
     updateBackground(newCountry) {
