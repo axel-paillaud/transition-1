@@ -151,11 +151,11 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     connectedCallback() {
-        document.addEventListener('switchImg', (event) => this.switchBackground(event));
+        // document.addEventListener('switchImg', (event) => this.switchBackground(event));
     }
 
     disconnectedCallback() {
-        document.removeEventListener('switchImg', (event) => this.switchBackground(event));
+        // document.removeEventListener('switchImg', (event) => this.switchBackground(event));
     }
 
     switchBackground(event) {
