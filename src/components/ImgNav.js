@@ -23,32 +23,44 @@ export default class ImgNav extends HTMLElement {
         shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.navButtons = shadowRoot.querySelectorAll('[data-country]');
+        this.currentCountry = "germany";
     }
 
     connectedCallback() {
         this.addEventListeners();
     }
 
+    disconnectedCallback() {
+        this.removeEventListeners();
+    }
+
     addEventListeners() {
         this.navButtons.forEach((button) => {
-            button.addEventListener('click', this.triggerSwitchImg);
+            button.addEventListener('click', (event) => this.triggerSwitchImg(event));
         });
     }
 
     removeEventListeners() {
         this.navButtons.forEach((button) => {
-            button.removeEventListener('click', this.triggerSwitchImg);
+            button.removeEventListener('click', (event) => this.triggerSwitchImg(event));
         }); 
     }
 
     triggerSwitchImg(event) {
-        const customEvent = new CustomEvent('switchImg', {
-            detail: { country: event.target.dataset.country },
-            bubbles: true,
-            composed: true,
-        });
+        let countryClicked = event.target.dataset.country;
 
-        this.dispatchEvent(customEvent);
+        if (countryClicked === this.currentCountry) return;
+
+        else {
+            const customEvent = new CustomEvent('switchImg', {
+                detail: { country: event.target.dataset.country },
+                bubbles: true,
+                composed: true,
+            });
+            this.dispatchEvent(customEvent);
+            this.currentCountry = countryClicked;
+        }
+
     }
 
 }
