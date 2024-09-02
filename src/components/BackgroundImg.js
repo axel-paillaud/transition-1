@@ -7,8 +7,8 @@ const template = document.createElement("template");
 
 const animDelay = { 
     removeLayer: {
-        delay: "0.35s", 
-        duration: "0.5s", 
+        delay: 350, 
+        duration: 500, 
         totalInMs: 850 
     },
 };
@@ -37,8 +37,6 @@ template.innerHTML = `
     width: 620px;
     height: 465px;
     animation: background-forward 0.9s cubic-bezier(.79,.14,.15,.86) forwards;
-    /* width: 100%; */
-    /* height: 100%; */
 }
 
 .background-img[data-country="austria"] {
@@ -95,17 +93,6 @@ template.innerHTML = `
     z-index: 15;
     height: 0px;
     animation: layer-upward 0.9s cubic-bezier(.70,.14,.15,.86) forwards;
-    /* height: 696px; */
-}
-
-.mask-layer.remove-layer {
-    height: 696px;
-    animation-name: layer-full;
-    animation-duration: ${animDelay.removeLayer.duration};
-    animation-delay: ${animDelay.removeLayer.delay};
-    /* animation-duration: 0.5s; */
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(.22,.61,.36,1);
 }
 
 .background-content {
@@ -128,14 +115,9 @@ template.innerHTML = `
     to { height: 696px; }
 }
 
-@keyframes layer-full {
-    from { height: 696px; }
-    to { height: 100%; }
-}
-
 @keyframes opacity-transition {
-    from { opacity: 0; }
-    to { opacity: 0.6 }
+from { opacity: 0; }
+to { opacity: 0.6 }
 }
 
 @keyframes fade-out {
@@ -184,26 +166,17 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     triggerLayerRemoval() {
-        // Add class to trigger layer removal animation
-        // const layerMask = this.backgroundImg.firstElementChild;
-        // layerMask.classList.add('remove-layer');
-        const currentLayer = this.backgroundImgMaskLayer;
 
-        /*         setTimeout(() => {
-            currentLayer.classList.add('remove-layer');
-        }, 0); */
-
-        // this.backgroundImgMaskLayer.classList.add('remove-layer');
-        // currentLayer.classList.add('remove-layer');
-
-        currentLayer.animate([
-            {height: '696px'},
-            {height: '100%'},
+        // Use javascript instead of CSS animation, to prevent immediate settings
+        // of value 'height' even with the delay
+        this.backgroundImgMaskLayer.animate([
+            { height: '696px' },
+            { height: '100%' },
         ], {
-                duration: 500,
-                delay: 350,
+                duration: animDelay.removeLayer.duration,
+                delay: animDelay.removeLayer.delay,
                 fill: 'forwards',
-                easing: 'cubic-bezier(.22, .61, .36, 1)' // Application de la courbe de Bézier
+                easing: 'cubic-bezier(.22, .61, .36, 1)'
             });
     }
 
@@ -211,6 +184,7 @@ export default class BackgroundImg extends HTMLElement {
         const newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
         newBackgroundImg.setAttribute('data-country', newCountry.name);
 
+        // wait the layer removal animation end, before remove completely old background img
         setTimeout(() => {
             this.backgroundImg.remove();
             this.backgroundImg = newBackgroundImg;
