@@ -146,7 +146,7 @@ template.innerHTML = `
 
 <div data-bg-container class="background-container">
     <div data-bg-img class="background-img">
-        <div class="mask-layer"></div>
+        <div data-layer-mask class="mask-layer"></div>
     </div>
     <div class="background-content">
         <slot></slot>
@@ -164,6 +164,7 @@ export default class BackgroundImg extends HTMLElement {
 
         this.backgroundContainer = shadowRoot.querySelector("[data-bg-container]");
         this.backgroundImg = shadowRoot.querySelector("[data-bg-img]");
+        this.backgroundImgMaskLayer = shadowRoot.querySelector("[data-layer-mask]");
         this.backgroundImgTemplate = this.backgroundImg.cloneNode(true);
     }
 
@@ -183,8 +184,10 @@ export default class BackgroundImg extends HTMLElement {
 
     triggerLayerRemoval() {
         // Add class to trigger layer removal animation
-        const layerMask = this.backgroundImg.firstElementChild;
-        layerMask.classList.add('remove-layer');
+        // const layerMask = this.backgroundImg.firstElementChild;
+        // layerMask.classList.add('remove-layer');
+
+        this.backgroundImgMaskLayer.classList.add('remove-layer');
     }
 
     updateBackground(newCountry) {
@@ -197,6 +200,7 @@ export default class BackgroundImg extends HTMLElement {
         }, animDelay.removeLayer.totalInMs);
 
         this.backgroundContainer.appendChild(newBackgroundImg);
+        this.backgroundImgMaskLayer = newBackgroundImg.querySelector("[data-layer-mask]");
     }
 }
 
