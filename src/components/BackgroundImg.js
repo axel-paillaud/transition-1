@@ -32,7 +32,6 @@ template.innerHTML = `
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* filter: blur(1px); */
     z-index: 10;
     width: 620px;
     height: 465px;
@@ -106,8 +105,8 @@ template.innerHTML = `
 }
 
 @keyframes background-forward {
-    from { width: 620px; height: 465px; }
-    to { width: 100%; height: 100%; }
+    from { width: 620px; height: 465px; filter: blur(0px); }
+    to { width: 100%; height: 100%; filter: blur(1px); }
 }
 
 @keyframes layer-upward {
