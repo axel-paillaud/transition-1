@@ -53,7 +53,7 @@ export default class ImgNav extends HTMLElement {
 
         else {
             const customEvent = new CustomEvent('switchImg', {
-                detail: { country: event.target.dataset.country },
+                detail: { country: countryClicked },
                 bubbles: true,
                 composed: true,
             });
