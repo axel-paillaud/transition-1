@@ -9,3 +9,5 @@ export const countryObj = {
         id: 2, name: "austria", frName: "Autriche", photo: austriaPhoto,
     }
 };
+
+export const countryCssClasses = Object.values(countryObj).map(country => country.name);
