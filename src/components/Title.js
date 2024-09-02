@@ -1,4 +1,5 @@
 const template = document.createElement("template");
+import { countryObj } from '../data/country';
 
 template.innerHTML = `
 <style>
@@ -41,7 +42,7 @@ template.innerHTML = `
 
 <h1 class="title-container">
     <div class="mask-container">
-        <span class="title">Allemagne</span>
+        <span data-title="germany" class="title">Allemagne</span>
     </div>
 </h1>
 `
@@ -53,7 +54,29 @@ export default class Title extends HTMLElement {
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(template.content.cloneNode(true));
 
-        this.headingTitle = shadowRoot.getElementById("title");
+        this.headingTitle = shadowRoot.querySelector("[data-title]");
+    }
+
+    connectedCallback() {
+        document.addEventListener('switchImg', (event) => this.switchTitle(event));
+    }
+
+    disconnectedCallback() {
+        document.addEventListener('switchImg', (event) => this.switchTitle(event));
+    }
+
+    switchTitle(event) {
+        const country = event.detail.country;
+        this.updateTitle(country);
+    }
+
+    removeTitle() {
+
+    }
+
+    updateTitle(country) {
+        const frCountryName = countryObj[country].frName;
+        this.headingTitle.innerText = frCountryName;
     }
 }
 
