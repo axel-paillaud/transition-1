@@ -20,10 +20,6 @@ template.innerHTML = `
     display: inline;
 }
 
-.char {
-    position: relative;
-}
-
 .mask-container {
     overflow: hidden;
 }
@@ -76,6 +72,10 @@ export default class Title extends HTMLElement {
 
     updateTitle(country) {
         const frCountryName = countryObj[country].frName;
+
+        this.headingTitle.classList.remove('title');
+        void this.headingTitle.offsetWidth;
+        this.headingTitle.classList.add('title');
         this.headingTitle.innerText = frCountryName;
     }
 }
