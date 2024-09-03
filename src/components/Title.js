@@ -1,15 +1,5 @@
 import { countryObj, countryCssClasses } from '../data/country';
-import { animationOutDuration } from '../utils/animationTimeline';
-
-const animDelay = {
-    titleOut: {
-        removeDurationInMs: 300,
-        removeDuration: "0.30s",
-    },
-    titleIn: {
-        durationInMs: 900,
-    },
-};
+import { animationOutDuration, animationTitle } from '../utils/animationTimeline';
 
 const template = document.createElement("template");
 
@@ -49,12 +39,16 @@ template.innerHTML = `
 }
 
 .title-in {
-    animation: 0.9s slide-up 0.75s cubic-bezier(.17,.84,.44,1) forwards;
+    animation-name: slide-up;
+    animation-duration: ${animationTitle.in.durationInSeconds}s;
+    animation-delay: ${animationTitle.in.delayInSeconds}s;
+    animation-timing-function: cubic-bezier(.17,.84,.44,1);
+    animation-fill-mode: forwards;
 }
 
 .title-out {
     animation-name: slide-down;
-    animation-duration: ${animDelay.titleOut.removeDuration};
+    animation-duration: ${animationTitle.out.durationInSeconds}s;
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(.55,.06,.68,.19);
 }
@@ -107,7 +101,7 @@ export default class Title extends HTMLElement {
         this.headingTitle.classList.add('title-out');
         setTimeout(() => {
             this.headingTitle.classList.remove('title-out');
-        }, animDelay.titleOut.removeDurationInMs);
+        }, animationTitle.out.duration);
     }
 
     updateTitle(country) {
