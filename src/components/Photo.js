@@ -18,7 +18,6 @@ picture {
     display: block;
     top: 465px;
     animation: 1s slide-up 0.45s cubic-bezier(.17,.84,.44,1) forwards;
-    /* top: 0; */
 }
 
 img {
