@@ -119,15 +119,6 @@ export default class Title extends HTMLElement {
             this.headingTitle.classList.add(country);
 
             this.headingTitle.classList.add('title-in');
-  /*           this.headingTitle.animate([
-                { top: '141px' },
-                { top: '0px' },
-            ], {
-                    duration: animDelay.titleIn.durationInMs,
-                    delay: 750,
-                    fill: 'forwards',
-                    easing: 'cubic-bezier(.17,.84,.44,1)'
-                }); */
 
             this.headingTitle.innerText = frCountryName;
 
