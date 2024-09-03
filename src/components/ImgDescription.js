@@ -9,9 +9,11 @@ const animDelay = {
     },
     descIn: {
         durationInMs: 800,
+        delay: 1000,
     },
     descOut: {
         durationInMs: 400,
+        delay: 200,
     },
 };
 
@@ -118,7 +120,7 @@ export default class ImgDescription extends HTMLElement {
     }
 
     removeDesc() {
-        let delay = 200;
+        let delay = animDelay.descOut.delay;
 
         this.descs.forEach((desc) => {
 
@@ -138,7 +140,8 @@ export default class ImgDescription extends HTMLElement {
     }
 
     updateDesc() {
-        let delay = 1000;
+        // let delay = 1000;
+        let delay = animDelay.descIn.delay;
 
         // let the transition animation finish 
         setTimeout(() => {
