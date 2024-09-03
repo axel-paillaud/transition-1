@@ -2,8 +2,8 @@ import { countryObj, countryCssClasses } from '../data/country';
 
 const animDelay = {
     title: {
-        removeDelayInMs: 400,
-        removeDelay: "0.4s",
+        removeDurationInMs: 400,
+        removeDuration: "0.4s",
     }
 };
 
@@ -50,7 +50,7 @@ template.innerHTML = `
 
 .title-out {
     animation-name: slide-down;
-    animation-duration: ${animDelay.title.removeDelay};
+    animation-duration: ${animDelay.title.removeDuration};
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(.9,.03,.69,.22);
 }
@@ -103,7 +103,7 @@ export default class Title extends HTMLElement {
         this.headingTitle.classList.add('title-out');
         setTimeout(() => {
             this.headingTitle.classList.remove('title-out');
-        }, animDelay.title.removeDelayInMs);
+        }, animDelay.title.removeDurationInMs);
     }
 
     updateTitle(country) {
@@ -118,7 +118,7 @@ export default class Title extends HTMLElement {
 
             this.headingTitle.innerText = frCountryName;
 
-        }, animDelay.title.removeDelayInMs);
+        }, animDelay.title.removeDurationInMs);
     }
 }
 
