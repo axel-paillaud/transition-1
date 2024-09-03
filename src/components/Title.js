@@ -1,12 +1,13 @@
-const template = document.createElement("template");
 import { countryObj, countryCssClasses } from '../data/country';
 
 const animDelay = {
     title: {
-        removeDelayInMs: 500,
-        removeDelay: "0.5s",
+        removeDelayInMs: 400,
+        removeDelay: "0.4s",
     }
 };
+
+const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
@@ -43,14 +44,13 @@ template.innerHTML = `
     top: 141px;
 }
 
-.add-title {
+.title-in {
     animation: 0.9s slide-up 0.75s cubic-bezier(.17,.84,.44,1) forwards;
 }
 
-.remove-title {
-    /* animation: slide-down 0.5s cubic-bezier(.9,.03,.69,.22) forwards; */
+.title-out {
     animation-name: slide-down;
-    animation-duration: 0.5s;
+    animation-duration: ${animDelay.title.removeDelay};
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(.9,.03,.69,.22);
 }
@@ -69,7 +69,7 @@ template.innerHTML = `
 
 <h1 class="title-container">
     <div class="mask-container">
-        <span data-title="germany" class="title add-title germany">Allemagne</span>
+        <span data-title="germany" class="title title-in germany">Allemagne</span>
     </div>
 </h1>
 `
@@ -99,25 +99,24 @@ export default class Title extends HTMLElement {
     }
 
     removeTitle() {
-        this.headingTitle.classList.remove('add-title');
-        this.headingTitle.classList.add('remove-title');
+        this.headingTitle.classList.remove('title-in');
+        this.headingTitle.classList.add('title-out');
         setTimeout(() => {
-            this.headingTitle.classList.remove('remove-title');
+            this.headingTitle.classList.remove('title-out');
         }, animDelay.title.removeDelayInMs);
     }
 
     updateTitle(country) {
         const frCountryName = countryObj[country].frName;
 
-        // Time to let remove title animation end
+        // Timeout to let remove title animation finish 
         setTimeout(() => {
             this.headingTitle.classList.remove(...countryCssClasses);
             this.headingTitle.classList.add(country);
 
-            this.headingTitle.classList.add('add-title');
+            this.headingTitle.classList.add('title-in');
 
             this.headingTitle.innerText = frCountryName;
-            console.log("hello");
 
         }, animDelay.title.removeDelayInMs);
     }
