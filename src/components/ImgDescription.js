@@ -2,17 +2,15 @@ import { countryObj, countryCssClasses } from '../data/country';
 
 const animDelay = {
     desc: {
-        delayOffset: 0.1,
-        duration: 0.8,
-        delayOffsetInMs: 100,
-        durationInMs: 800,
+        delayOffset: 100,
+        duration: 800,
     },
     descIn: {
-        durationInMs: 800,
+        duration: 800,
         delay: 1000,
     },
     descOut: {
-        durationInMs: 400,
+        duration: 400,
         delay: 200,
     },
 };
@@ -128,14 +126,14 @@ export default class ImgDescription extends HTMLElement {
                 { top: '0px' },
                 { top: '19px' },
             ], {
-                    duration: animDelay.descOut.durationInMs,
+                    duration: animDelay.descOut.duration,
                     delay: delay,
                     fill: 'forwards',
                     easing: 'cubic-bezier(.55,.06,.68,.19)'
                 });
 
 
-            delay -= animDelay.desc.delayOffsetInMs;
+            delay -= animDelay.desc.delayOffset;
         });
     }
 
@@ -151,17 +149,17 @@ export default class ImgDescription extends HTMLElement {
                     { top: '19px' },
                     { top: '0px' },
                 ], {
-                        duration: animDelay.descIn.durationInMs,
+                        duration: animDelay.descIn.duration,
                         delay: delay,
                         fill: 'forwards',
                         easing: 'cubic-bezier(.17,.84,.44,1)'
                     });
 
 
-                delay += animDelay.desc.delayOffsetInMs;
+                delay += animDelay.desc.delayOffset;
             });
 
-        }, animDelay.descOut.durationInMs);
+        }, animDelay.descOut.duration);
     }
 }
 
