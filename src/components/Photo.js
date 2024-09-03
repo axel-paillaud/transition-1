@@ -1,4 +1,5 @@
 import { countryObj } from "../data/country";
+import { animationOutDuration } from "../utils/animationOutDuration";
 
 const template = document.createElement("template");
 
@@ -53,22 +54,26 @@ export default class PhotoImg extends HTMLElement {
     }
 
     connectedCallback() {
-        // document.addEventListener('switchImg', (event) => this.switchPhoto(event));
+        document.addEventListener('switchImg', (event) => this.switchPhoto(event));
     }
 
     disconnectedCallback() {
-        // document.removeEventListener('switchImg', (event) => this.switchPhoto(event));
+        document.removeEventListener('switchImg', (event) => this.switchPhoto(event));
     }
 
     switchPhoto(event) {
         const country = countryObj[event.detail.country];
         const newPhoto = this.photo.cloneNode(true);
-        newPhoto.lastElementChild.src = country.photo;
 
-        this.photo.remove();
+        // let animation out finish
+        setTimeout(() => {
+            newPhoto.lastElementChild.src = country.photo;
+            this.photo.remove();
+            this.container.appendChild(newPhoto);
+            this.photo = newPhoto;
+        }, animationOutDuration);
 
-        this.container.appendChild(newPhoto);
-        this.photo = newPhoto;
+
     }
 
 }

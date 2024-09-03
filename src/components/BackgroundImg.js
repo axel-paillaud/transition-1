@@ -2,6 +2,7 @@ import germany1920Avif from "/images/germany-1920.avif";
 import austria1920Avif from "/images/austria-1920.avif";
 
 import { countryObj } from '../data/country';
+import { animationOutDuration } from "../utils/animationOutDuration";
 
 const template = document.createElement("template");
 
@@ -151,17 +152,21 @@ export default class BackgroundImg extends HTMLElement {
     }
 
     connectedCallback() {
-        // document.addEventListener('switchImg', (event) => this.switchBackground(event));
+        document.addEventListener('switchImg', (event) => this.switchBackground(event));
     }
 
     disconnectedCallback() {
-        // document.removeEventListener('switchImg', (event) => this.switchBackground(event));
+        document.removeEventListener('switchImg', (event) => this.switchBackground(event));
     }
 
     switchBackground(event) {
         const newCountry = countryObj[event.detail.country]; 
-        this.triggerLayerRemoval();
-        this.updateBackground(newCountry);
+
+        // let animation out finish
+        setTimeout(() => {
+            this.triggerLayerRemoval();
+            this.updateBackground(newCountry);
+        }, animationOutDuration);
     }
 
     triggerLayerRemoval() {
