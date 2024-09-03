@@ -1,5 +1,6 @@
 import germany1920Avif from "/images/germany-1920.avif";
 import austria1920Avif from "/images/austria-1920.avif";
+import slovenia1920Avif from "/images/slovenia-1920.avif";
 
 import { countryObj } from '../data/country';
 import { animationOutDuration, animationBackground } from "../utils/animationTimeline";
@@ -42,6 +43,10 @@ template.innerHTML = `
     background-image: url(${germany1920Avif});
 }
 
+.background-img[data-country="slovenia"] {
+    background-image: url(${slovenia1920Avif});
+}
+
 .background-img::before {
     content: "";
     position: absolute;
@@ -61,6 +66,10 @@ template.innerHTML = `
 
 .background-img[data-country="germany"]::before {
     background-color: var(--grass-500);
+}
+
+.background-img[data-country="slovenia"]::before {
+    background-color: var(--lake-500);
 }
 
 /* Old background-img */
@@ -84,6 +93,10 @@ template.innerHTML = `
 }
 
 .background-img[data-country="germany"]::after {
+    background-image: url(${austria1920Avif});
+}
+
+.background-img[data-country="slovenia"]::after {
     background-image: url(${austria1920Avif});
 }
 
