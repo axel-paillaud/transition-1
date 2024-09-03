@@ -21,6 +21,15 @@ export const countryObj = {
         date: 'août 2021',
         description: 'Donec non lorem molestie',
     },
+    slovenia: {
+        id: 3,
+        name: "slovenia",
+        frName: "Slovénie",
+        photo: sloveniaPhoto,
+        title: 'Lucie et Quentin',
+        date: 'novembre 2020',
+        description: 'Etiam vulputate lectus id',
+    },
 };
 
 export const countryCssClasses = Object.values(countryObj).map(country => country.name);
