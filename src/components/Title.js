@@ -1,10 +1,14 @@
 import { countryObj, countryCssClasses } from '../data/country';
+import { animationOutDuration } from '../utils/animationOutDuration';
 
 const animDelay = {
-    title: {
-        removeDurationInMs: 400,
-        removeDuration: "0.4s",
-    }
+    titleOut: {
+        removeDurationInMs: 300,
+        removeDuration: "0.30s",
+    },
+    titleIn: {
+        durationInMs: 900,
+    },
 };
 
 const template = document.createElement("template");
@@ -50,9 +54,10 @@ template.innerHTML = `
 
 .title-out {
     animation-name: slide-down;
-    animation-duration: ${animDelay.title.removeDuration};
+    animation-duration: ${animDelay.titleOut.removeDuration};
     animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(.9,.03,.69,.22);
+    animation-timing-function: cubic-bezier(.55,.06,.68,.19);
+    /* animation-timing-function: cubic-bezier(.9,.03,.69,.22); */
 }
 
 @keyframes slide-up {
@@ -103,7 +108,7 @@ export default class Title extends HTMLElement {
         this.headingTitle.classList.add('title-out');
         setTimeout(() => {
             this.headingTitle.classList.remove('title-out');
-        }, animDelay.title.removeDurationInMs);
+        }, animDelay.titleOut.removeDurationInMs);
     }
 
     updateTitle(country) {
@@ -115,10 +120,19 @@ export default class Title extends HTMLElement {
             this.headingTitle.classList.add(country);
 
             this.headingTitle.classList.add('title-in');
+  /*           this.headingTitle.animate([
+                { top: '141px' },
+                { top: '0px' },
+            ], {
+                    duration: animDelay.titleIn.durationInMs,
+                    delay: 750,
+                    fill: 'forwards',
+                    easing: 'cubic-bezier(.17,.84,.44,1)'
+                }); */
 
             this.headingTitle.innerText = frCountryName;
 
-        }, animDelay.title.removeDurationInMs);
+        }, animationOutDuration);
     }
 }
 

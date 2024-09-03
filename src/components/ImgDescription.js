@@ -1,4 +1,5 @@
 import { countryObj, countryCssClasses } from '../data/country';
+import { animationOutDuration } from '../utils/animationOutDuration';
 
 const animDelay = {
     desc: {
@@ -7,11 +8,12 @@ const animDelay = {
     },
     descIn: {
         duration: 800,
+        durationInSeconds: 0.8,
         delay: 1000,
     },
     descOut: {
         duration: 400,
-        delay: 200,
+        delay: 0,
     },
 };
 
@@ -41,7 +43,7 @@ p {
 
 .desc-in {
     animation-name: slide-up;
-    animation-duration: 0.8s;
+    animation-duration: ${animDelay.descIn.durationInSeconds}s;
     animation-timing-function: cubic-bezier(.17,.84,.44,1);
     animation-fill-mode: forwards;
 }
@@ -167,7 +169,7 @@ export default class ImgDescription extends HTMLElement {
             this.updateDescContent();
             this.updateDescClasse();
 
-        }, totalRemoveAnimDuration);
+        }, animationOutDuration);
     }
 
     updateDescContent() {
