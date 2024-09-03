@@ -1,7 +1,3 @@
-import germany1920Avif from "/images/germany-1920.avif";
-import austria1920Avif from "/images/austria-1920.avif";
-import slovenia1920Avif from "/images/slovenia-1920.avif";
-
 import { countryObj } from '../data/country';
 import { animationOutDuration, animationBackground } from "../utils/animationTimeline";
 
@@ -22,7 +18,7 @@ template.innerHTML = `
     justify-content: center;
     align-items: center;
     position: absolute;
-    background-image: url(${germany1920Avif});
+    background-image: url(${countryObj.germany.backgroundImg});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -36,15 +32,15 @@ template.innerHTML = `
 }
 
 .background-img[data-country="austria"] {
-    background-image: url(${austria1920Avif});
+    background-image: url(${countryObj.austria.backgroundImg});
 }
 
 .background-img[data-country="germany"] {
-    background-image: url(${germany1920Avif});
+    background-image: url(${countryObj.germany.backgroundImg});
 }
 
 .background-img[data-country="slovenia"] {
-    background-image: url(${slovenia1920Avif});
+    background-image: url(${countryObj.slovenia.backgroundImg});
 }
 
 .background-img::before {
@@ -88,18 +84,6 @@ template.innerHTML = `
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
-
-/* .background-img[data-country="austria"]::after {
-    background-image: url(${germany1920Avif});
-}
-
-.background-img[data-country="germany"]::after {
-    background-image: url(${slovenia1920Avif});
-}
-
-.background-img[data-country="slovenia"]::after {
-    background-image: url(${austria1920Avif});
-} */
 
 .mask-layer {
     position: absolute;
@@ -206,8 +190,11 @@ export default class BackgroundImg extends HTMLElement {
         const newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
         newBackgroundImg.setAttribute('data-country', newCountry.name);
 
-        // newBackgroundImg.style.setProperty('--previous-country', `url(${slovenia1920Avif})`);
-        newBackgroundImg.style.setProperty('--previous-country', `url(${countryObj[this.backgroundImg.dataset.country].backgroundImg})`);
+        // Set dynamic previous country, to get this transition from previous to current country.
+        newBackgroundImg.style.setProperty(
+            '--previous-country', 
+            `url(${countryObj[this.backgroundImg.dataset.country].backgroundImg})`
+        );
 
         // wait the layer removal animation end, before remove completely old background img
         setTimeout(() => {
