@@ -1,5 +1,6 @@
 import germanyPhoto from "/images/germany-768.avif";
 import austriaPhoto from "/images/austria-768.avif";
+import sloveniaPhoto from "/images/slovenia-768.avif";
 
 export const countryObj = {
     germany: {
