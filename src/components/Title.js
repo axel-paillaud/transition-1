@@ -89,7 +89,7 @@ export default class Title extends HTMLElement {
     }
 
     disconnectedCallback() {
-        document.addEventListener('switchImg', (event) => this.switchTitle(event));
+        document.removeEventListener('switchImg', (event) => this.switchTitle(event));
     }
 
     switchTitle(event) {
