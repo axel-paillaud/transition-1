@@ -92,9 +92,9 @@ template.innerHTML = `
     background-image: url(${germany1920Avif});
 }
 
-.background-img[data-country="germany"]::after {
-    background-image: url(${austria1920Avif});
-}
+/* .background-img[data-country="germany"]::after {
+    background-image: url(${slovenia1920Avif});
+} */
 
 .background-img[data-country="slovenia"]::after {
     background-image: url(${austria1920Avif});
@@ -145,7 +145,7 @@ to { opacity: 0.6 }
 </style>
 
 <div data-bg-container class="background-container">
-    <div data-bg-img class="background-img">
+    <div data-bg-img data-country="germany" class="background-img">
         <div data-layer-mask class="mask-layer"></div>
     </div>
     <div class="background-content">
