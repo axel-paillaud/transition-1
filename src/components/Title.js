@@ -24,6 +24,10 @@ template.innerHTML = `
     color: var(--grass-500);
 }
 
+.slovenia {
+    color: var(--lake-500);
+}
+
 .container-mask {
     overflow: hidden; 
     display: inline;

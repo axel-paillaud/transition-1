@@ -60,6 +60,15 @@ p {
     color: var(--sea-300);
 }
 
+.slovenia {
+    color: var(--lake-500);
+}
+
+
+.slovenia.desc-date, .slovenia.desc-subdesc {
+    color: var(--lake-300);
+}
+
 @keyframes slide-up {
     from { top: 18px; }
     to { top: 0px; }
