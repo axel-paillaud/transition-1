@@ -84,6 +84,7 @@ main {
 
 .img-desc-container {
     position: absolute;
-    right: -256px;
+    left: 653px;
     bottom: 0;
+    width: 100%;
 }

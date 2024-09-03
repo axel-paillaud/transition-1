@@ -102,6 +102,7 @@ export default class ImgDescription extends HTMLElement {
         shadowRoot.appendChild(template.content.cloneNode(true));
         
         this.descs = shadowRoot.querySelectorAll("[data-desc]");
+        this.selectedCountry = "germany";
     }
 
     connectedCallback() {
@@ -113,8 +114,10 @@ export default class ImgDescription extends HTMLElement {
     }
 
     switchDesc(country) {
+        this.selectedCountry = country;
+
         this.removeDesc();
-        this.updateDesc(country);
+        this.updateDesc();
     }
 
     removeDesc() {
@@ -139,9 +142,12 @@ export default class ImgDescription extends HTMLElement {
 
     updateDesc() {
         let delay = animDelay.descIn.delay;
+        // add offset to the remove anim duration
+        let totalRemoveAnimDuration = animDelay.descOut.duration + 300;
 
         // let the transition animation finish 
         setTimeout(() => {
+
 
             this.descs.forEach((desc) => {
                 desc.animate([
@@ -158,7 +164,19 @@ export default class ImgDescription extends HTMLElement {
                 delay += animDelay.desc.delayOffset;
             });
 
-        }, animDelay.descOut.duration);
+            this.updateDescContent();
+
+        }, totalRemoveAnimDuration);
+    }
+
+    updateDescContent() {
+        const title = this.descs[0]; 
+        const date = this.descs[1]; 
+        const desc = this.descs[2]; 
+
+        title.innerText = countryObj[this.selectedCountry].title;
+        // date.innerText = countryObj[this.selectedCountry].date;
+        desc.innerText = countryObj[this.selectedCountry].description;
     }
 }
 

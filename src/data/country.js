@@ -16,7 +16,7 @@ export const countryObj = {
         name: "austria", 
         frName: "Autriche", 
         photo: austriaPhoto,
-        title: 'Sarah & Louis',
+        title: 'Emma & Arthur',
         date: 'août 2021',
         description: 'Donec non lorem molestie',
     }
