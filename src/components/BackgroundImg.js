@@ -78,6 +78,7 @@ template.innerHTML = `
     position: absolute;
     inset: 0;
     z-index: 11;
+    background-image: var(--previous-country, none);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -88,17 +89,17 @@ template.innerHTML = `
     animation-fill-mode: forwards;
 }
 
-.background-img[data-country="austria"]::after {
+/* .background-img[data-country="austria"]::after {
     background-image: url(${germany1920Avif});
 }
 
-/* .background-img[data-country="germany"]::after {
+.background-img[data-country="germany"]::after {
     background-image: url(${slovenia1920Avif});
-} */
+}
 
 .background-img[data-country="slovenia"]::after {
     background-image: url(${austria1920Avif});
-}
+} */
 
 .mask-layer {
     position: absolute;
@@ -204,6 +205,9 @@ export default class BackgroundImg extends HTMLElement {
     updateBackground(newCountry) {
         const newBackgroundImg = this.backgroundImgTemplate.cloneNode(true);
         newBackgroundImg.setAttribute('data-country', newCountry.name);
+
+        // newBackgroundImg.style.setProperty('--previous-country', `url(${slovenia1920Avif})`);
+        newBackgroundImg.style.setProperty('--previous-country', `url(${countryObj[this.backgroundImg.dataset.country].backgroundImg})`);
 
         // wait the layer removal animation end, before remove completely old background img
         setTimeout(() => {
