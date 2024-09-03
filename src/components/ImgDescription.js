@@ -1,11 +1,18 @@
 import { countryObj, countryCssClasses } from '../data/country';
 
 const animDelay = {
-    item: {
+    desc: {
         delayOffset: 0.1,
         duration: 0.8,
+        delayOffsetInMs: 100,
         durationInMs: 800,
-    }
+    },
+    descIn: {
+        durationInMs: 800,
+    },
+    descOut: {
+        durationInMs: 400,
+    },
 };
 
 const template = document.createElement("template");
@@ -34,13 +41,6 @@ p {
 
 .desc-in {
     animation-name: slide-up;
-    animation-duration: 0.8s;
-    animation-timing-function: cubic-bezier(.17,.84,.44,1);
-    animation-fill-mode: forwards;
-}
-
-.desc-out {
-    animation-name: slide-down;
     animation-duration: 0.8s;
     animation-timing-function: cubic-bezier(.17,.84,.44,1);
     animation-fill-mode: forwards;
@@ -79,10 +79,6 @@ p {
     to { top: 0px; }
 }
 
-@keyframes slide-down {
-    from { top: 0px; }
-    to { top: 18px; }
-}
 </style>
 
 <div class="description-container">
@@ -118,23 +114,51 @@ export default class ImgDescription extends HTMLElement {
 
     switchDesc(country) {
         this.removeDesc();
-        this.updateDesc();
+        this.updateDesc(country);
     }
 
     removeDesc() {
-        let offsetDelay = 0.2;
+        let delay = 200;
 
         this.descs.forEach((desc) => {
-            desc.style.animationDelay = `${offsetDelay}s`;    
-            desc.classList.remove('desc-in');
-            desc.classList.add('desc-out');
 
-            offsetDelay -= 0.1;
+            desc.animate([
+                { top: '0px' },
+                { top: '19px' },
+            ], {
+                    duration: animDelay.descOut.durationInMs,
+                    delay: delay,
+                    fill: 'forwards',
+                    easing: 'cubic-bezier(.55,.06,.68,.19)'
+                });
+
+
+            delay -= animDelay.desc.delayOffsetInMs;
         });
     }
 
     updateDesc() {
-        // desc.classList.remove(...countryCssClasses);
+        let delay = 1000;
+
+        // let the transition animation finish 
+        setTimeout(() => {
+
+            this.descs.forEach((desc) => {
+                desc.animate([
+                    { top: '19px' },
+                    { top: '0px' },
+                ], {
+                        duration: animDelay.descIn.durationInMs,
+                        delay: delay,
+                        fill: 'forwards',
+                        easing: 'cubic-bezier(.17,.84,.44,1)'
+                    });
+
+
+                delay += animDelay.desc.delayOffsetInMs;
+            });
+
+        }, animDelay.descOut.durationInMs);
     }
 }
 

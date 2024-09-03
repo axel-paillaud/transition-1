@@ -109,7 +109,7 @@ export default class Title extends HTMLElement {
     updateTitle(country) {
         const frCountryName = countryObj[country].frName;
 
-        // Timeout to let remove title animation finish 
+        // let the transition animation finish 
         setTimeout(() => {
             this.headingTitle.classList.remove(...countryCssClasses);
             this.headingTitle.classList.add(country);
