@@ -165,6 +165,7 @@ export default class ImgDescription extends HTMLElement {
             });
 
             this.updateDescContent();
+            this.updateDescClasse();
 
         }, totalRemoveAnimDuration);
     }
@@ -175,8 +176,15 @@ export default class ImgDescription extends HTMLElement {
         const desc = this.descs[2]; 
 
         title.innerText = countryObj[this.selectedCountry].title;
-        // date.innerText = countryObj[this.selectedCountry].date;
+        date.innerText = countryObj[this.selectedCountry].date;
         desc.innerText = countryObj[this.selectedCountry].description;
+    }
+
+    updateDescClasse() {
+        this.descs.forEach((desc) => {
+            desc.classList.remove(...countryCssClasses);
+            desc.classList.add(this.selectedCountry);
+        });
     }
 }
 
