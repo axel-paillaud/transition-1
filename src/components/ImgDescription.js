@@ -138,7 +138,6 @@ export default class ImgDescription extends HTMLElement {
     }
 
     updateDesc() {
-        // let delay = 1000;
         let delay = animDelay.descIn.delay;
 
         // let the transition animation finish 
