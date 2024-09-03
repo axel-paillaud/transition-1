@@ -1,3 +1,5 @@
+import { countryObj, countryCssClasses } from '../data/country';
+
 const animDelay = {
     item: {
         delayOffset: 0.1,
@@ -85,13 +87,13 @@ p {
 
 <div class="description-container">
     <div class="container-mask">
-        <p data-item class="germany desc desc-title desc-in">Sarah & Louis</p>
+        <p data-desc class="germany desc desc-title desc-in">Sarah & Louis</p>
     </div>
     <div class="container-mask">
-        <p data-item class="germany desc desc-date desc-in">juillet 2020</p>
+        <p data-desc class="germany desc desc-date desc-in">juillet 2020</p>
     </div>
     <div class="container-mask">
-        <p data-item class="germany desc desc-subdesc desc-in">Lorem ipsum dolor sit amet</p>
+        <p data-desc class="germany desc desc-subdesc desc-in">Lorem ipsum dolor sit amet</p>
     </div>
 </div>
 `
@@ -103,15 +105,36 @@ export default class ImgDescription extends HTMLElement {
         const shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.appendChild(template.content.cloneNode(true));
         
-        this.items = shadowRoot.querySelectorAll("[data-item]");
+        this.descs = shadowRoot.querySelectorAll("[data-desc]");
     }
 
     connectedCallback() {
-        document.addEventListener('switchImg', () => this.switchDesc());
+        document.addEventListener('switchImg', (event) => this.switchDesc(event.detail.country));
     }
 
     disconnectedCallback() {
-        document.removeEventListener('switchImg', () => this.switchDesc());
+        document.removeEventListener('switchImg', (event) => this.switchDesc(event.detail.country));
+    }
+
+    switchDesc(country) {
+        this.removeDesc();
+        this.updateDesc();
+    }
+
+    removeDesc() {
+        let offsetDelay = 0.2;
+
+        this.descs.forEach((desc) => {
+            desc.style.animationDelay = `${offsetDelay}s`;    
+            desc.classList.remove('desc-in');
+            desc.classList.add('desc-out');
+
+            offsetDelay -= 0.1;
+        });
+    }
+
+    updateDesc() {
+        // desc.classList.remove(...countryCssClasses);
     }
 }
 
