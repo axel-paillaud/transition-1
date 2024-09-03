@@ -19,7 +19,7 @@ export const countryObj = {
         title: 'Emma & Arthur',
         date: 'août 2021',
         description: 'Donec non lorem molestie',
-    }
+    },
 };
 
 export const countryCssClasses = Object.values(countryObj).map(country => country.name);
