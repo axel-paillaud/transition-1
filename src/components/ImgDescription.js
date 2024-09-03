@@ -1,21 +1,5 @@
 import { countryObj, countryCssClasses } from '../data/country';
-import { animationOutDuration } from '../utils/animationOutDuration';
-
-const animDelay = {
-    desc: {
-        delayOffset: 100,
-        duration: 800,
-    },
-    descIn: {
-        duration: 800,
-        durationInSeconds: 0.8,
-        delay: 1000,
-    },
-    descOut: {
-        duration: 300,
-        delay: 0,
-    },
-};
+import { animationOutDuration, animImgDescription } from '../utils/animationTimeline';
 
 const template = document.createElement("template");
 
@@ -43,7 +27,7 @@ p {
 
 .desc-in {
     animation-name: slide-up;
-    animation-duration: ${animDelay.descIn.durationInSeconds}s;
+    animation-duration: ${animImgDescription.in.durationInSeconds}s;
     animation-timing-function: cubic-bezier(.17,.84,.44,1);
     animation-fill-mode: forwards;
 }
@@ -123,7 +107,7 @@ export default class ImgDescription extends HTMLElement {
     }
 
     removeDesc() {
-        let delay = animDelay.descOut.delay;
+        let delay = animImgDescription.out.delay;
 
         this.descs.forEach((desc) => {
 
@@ -131,21 +115,21 @@ export default class ImgDescription extends HTMLElement {
                 { top: '0px' },
                 { top: '19px' },
             ], {
-                    duration: animDelay.descOut.duration,
+                    duration: animImgDescription.out.duration,
                     delay: delay,
                     fill: 'forwards',
                     easing: 'cubic-bezier(.55,.06,.68,.19)'
                 });
 
 
-            delay -= animDelay.desc.delayOffset;
+            delay -= animImgDescription.offset.duration;
         });
     }
 
     updateDesc() {
-        let delay = animDelay.descIn.delay;
+        let delay = animImgDescription.in.delay;
         // add offset to the remove anim duration
-        let totalRemoveAnimDuration = animDelay.descOut.duration + 300;
+        let totalRemoveAnimDuration = animImgDescription.out.duration + 300;
 
         // let the transition animation finish 
         setTimeout(() => {
@@ -156,14 +140,14 @@ export default class ImgDescription extends HTMLElement {
                     { top: '19px' },
                     { top: '0px' },
                 ], {
-                        duration: animDelay.descIn.duration,
+                        duration: animImgDescription.in.duration,
                         delay: delay,
                         fill: 'forwards',
                         easing: 'cubic-bezier(.17,.84,.44,1)'
                     });
 
 
-                delay += animDelay.desc.delayOffset;
+                delay += animImgDescription.offset.duration;
             });
 
             this.updateDescContent();

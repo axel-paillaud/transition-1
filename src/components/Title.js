@@ -1,5 +1,5 @@
 import { countryObj, countryCssClasses } from '../data/country';
-import { animationOutDuration } from '../utils/animationOutDuration';
+import { animationOutDuration } from '../utils/animationTimeline';
 
 const animDelay = {
     titleOut: {
