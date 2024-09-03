@@ -2,17 +2,9 @@ import germany1920Avif from "/images/germany-1920.avif";
 import austria1920Avif from "/images/austria-1920.avif";
 
 import { countryObj } from '../data/country';
-import { animationOutDuration } from "../utils/animationTimeline";
+import { animationOutDuration, animationBackground } from "../utils/animationTimeline";
 
 const template = document.createElement("template");
-
-const animDelay = { 
-    removeLayer: {
-        delay: 350, 
-        duration: 500, 
-        totalInMs: 850 
-    },
-};
 
 template.innerHTML = `
 <style>
@@ -36,7 +28,10 @@ template.innerHTML = `
     z-index: 10;
     width: 620px;
     height: 465px;
-    animation: background-forward 0.9s cubic-bezier(.79,.14,.15,.86) forwards;
+    animation-name: background-forward;
+    animation-duration: ${animationBackground.in.durationInSeconds}s;
+    animation-timing-function: cubic-bezier(.79,.14,.15,.86);
+    animation-fill-mode: forwards;
 }
 
 .background-img[data-country="austria"] {
@@ -54,7 +49,10 @@ template.innerHTML = `
     background-color: var(--grass-500);
     opacity: 0;
     z-index: 12;
-    animation: opacity-transition 0.9s ease forwards;
+    animation-name: opacity-transition;
+    animation-duration: ${animationBackground.in.durationInSeconds}s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
 }
 
 .background-img[data-country="austria"]::before {
@@ -75,7 +73,10 @@ template.innerHTML = `
     background-size: cover;
     background-position: center;
     opacity: 1;
-    animation: fade-out 0.9s ease-in-out forwards;
+    animation-name: fade-out;
+    animation-duration: ${animationBackground.in.durationInSeconds}s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 .background-img[data-country="austria"]::after {
@@ -92,7 +93,10 @@ template.innerHTML = `
     width: 100%;
     z-index: 15;
     height: 0px;
-    animation: layer-upward 0.9s cubic-bezier(.70,.14,.15,.86) forwards;
+    animation-name: layer-upward;
+    animation-duration: ${animationBackground.in.durationInSeconds}s;
+    animation-timing-function: cubic-bezier(.70,.14,.15,.86);
+    animation-fill-mode: forwards;
 }
 
 .background-content {
@@ -177,8 +181,8 @@ export default class BackgroundImg extends HTMLElement {
             { height: '696px' },
             { height: '100%' },
         ], {
-                duration: animDelay.removeLayer.duration,
-                delay: animDelay.removeLayer.delay,
+                duration: animationBackground.out.duration,
+                delay: animationBackground.out.delay,
                 fill: 'forwards',
                 easing: 'cubic-bezier(.22, .61, .36, 1)'
             });
@@ -192,7 +196,7 @@ export default class BackgroundImg extends HTMLElement {
         setTimeout(() => {
             this.backgroundImg.remove();
             this.backgroundImg = newBackgroundImg;
-        }, animDelay.removeLayer.totalInMs);
+        }, animationBackground.out.totalDuration);
 
         this.backgroundContainer.appendChild(newBackgroundImg);
         this.backgroundImgMaskLayer = newBackgroundImg.querySelector("[data-layer-mask]");

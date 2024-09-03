@@ -1,5 +1,4 @@
-// full duration of out animation 
-
+// Time to animation out (exit) to finish
 export const animationOutDuration = 300;
 
 export const animImgDescription = {
@@ -29,12 +28,15 @@ export const animationTitle = {
     },
 }
 
-const animDelay = {
-    titleOut: {
-        removeDurationInMs: 300,
-        removeDuration: "0.30s",
+export const animationBackground = {
+    in: {
+        duration: 900,
+        durationInSeconds: 0.9,
     },
-    titleIn: {
-        durationInMs: 900,
+    out: {
+        delay: 350,
+        duration: 500,
+        totalDuration: 850,
     },
-};
+}
+
