@@ -1,3 +1,3 @@
 // full duration of out animation 
 
-export const animationOutDuration = 400;
+export const animationOutDuration = 300;

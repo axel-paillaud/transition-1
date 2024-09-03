@@ -57,7 +57,6 @@ template.innerHTML = `
     animation-duration: ${animDelay.titleOut.removeDuration};
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(.55,.06,.68,.19);
-    /* animation-timing-function: cubic-bezier(.9,.03,.69,.22); */
 }
 
 @keyframes slide-up {

@@ -12,7 +12,7 @@ const animDelay = {
         delay: 1000,
     },
     descOut: {
-        duration: 400,
+        duration: 300,
         delay: 0,
     },
 };
