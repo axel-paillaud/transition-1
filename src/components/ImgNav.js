@@ -10,9 +10,15 @@ template.innerHTML = `
 </style>
 
 <nav class="nav">
-    <button data-country="germany">germany</button>
-    <button data-country="austria">austria</button>
-    <button data-country="slovenia">slovenia</button>
+    <button data-country="germany" class="nav-btn">
+        <img class="nav-img" src="" alt="germany" width="180" height="100">
+    </button>
+    <button data-country="austria" class="nav-btn">
+        <img class="nav-img" src="" alt="austria">
+    </button>
+    <button data-country="slovenia" class="nav-btn">
+        <img class="nav-img" src="" alt="slovenia">
+    </button>
 </nav>
 `
 
