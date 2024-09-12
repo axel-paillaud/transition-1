@@ -143,7 +143,6 @@ export default class ImgDescription extends HTMLElement {
         // let the transition animation finish 
         setTimeout(() => {
 
-
             this.descs.forEach((desc) => {
                 desc.animate([
                     { top: '19px' },

@@ -149,7 +149,6 @@ template.innerHTML = `
         from { width: 288px; height: 216px; filter: blur(0px); }
         to { width: 100%; height: 100%; filter: blur(1px); }
     }
-
 }
 
 </style>

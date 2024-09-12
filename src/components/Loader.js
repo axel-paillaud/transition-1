@@ -2,6 +2,7 @@ const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
+
 .loader {
     border: 8px solid #f3f3f3;
     border-top: 8px solid var(--grass-500); 
@@ -15,6 +16,7 @@ template.innerHTML = `
 0% { transform: rotate(0deg); }
 100% { transform: rotate(360deg); }
 }
+
 </style>
 
 <div class="loader"></div>
