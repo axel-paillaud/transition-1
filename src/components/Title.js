@@ -5,10 +5,12 @@ const template = document.createElement("template");
 
 template.innerHTML = `
 <style>
+
 .title-container {
     font-family: Branch;
     margin: 16px 0 0 0;
     font-size: 128px;
+    font-weight: 400;
     position: absolute;
     z-index: 10;
     left: 64px;
