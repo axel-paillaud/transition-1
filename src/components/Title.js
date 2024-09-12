@@ -79,7 +79,7 @@ template.innerHTML = `
 @media screen and (width < 640px) {
     .title-container {
         left: 24px;
-        top: 64px;
+        top: 32px;
         font-size: 56px;
     }
 }
