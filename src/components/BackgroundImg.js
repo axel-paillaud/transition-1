@@ -137,12 +137,12 @@ template.innerHTML = `
 
 @media screen and (width < 640px) {
     .background-content {
-        height: 576px;
+        height: 512px;
     }
 
     @keyframes layer-upward {
         from { height: 0px; }
-        to { height: 576px; }
+        to { height: 512px; }
     }
 
     @keyframes background-forward {
@@ -200,7 +200,7 @@ export default class BackgroundImg extends HTMLElement {
         // Use javascript instead of CSS animation, to prevent immediate settings
         // of value 'height' even with the delay
         let height = 696;
-        if (window.innerWidth < 640) height = 576;
+        if (window.innerWidth < 640) height = 512;
 
         this.backgroundImgMaskLayer.animate([
             { height: `${height}px` },
