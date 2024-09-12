@@ -22,7 +22,7 @@ p {
 
 .desc {
     position: relative;
-    top: 18px;
+    top: 20px;
 }
 
 .desc-in {
@@ -70,7 +70,7 @@ p {
 }
 
 @keyframes slide-up {
-    from { top: 18px; }
+    from { top: 20px; }
     to { top: 0px; }
 }
 
@@ -122,7 +122,7 @@ export default class ImgDescription extends HTMLElement {
 
             desc.animate([
                 { top: '0px' },
-                { top: '19px' },
+                { top: '20px' },
             ], {
                     duration: animImgDescription.out.duration,
                     delay: delay,

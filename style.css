@@ -93,3 +93,24 @@ main {
     bottom: 0;
     width: 100%;
 }
+
+@media screen and (width < 1024px) {
+    .img-desc-container {
+        left: 0;
+        bottom: -126px;
+    }
+
+    .nav-container {
+        right: 36px;
+    }
+}
+
+@media screen and (width < 640px) {
+    .nav-container {
+        position: fixed;
+        right: 24px;
+        top: 24px;
+        background-color: #FFFFFF54;
+        padding: 6px;
+    }
+}

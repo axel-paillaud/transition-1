@@ -67,6 +67,21 @@ template.innerHTML = `
     to { top: 141px; }
 }
 
+@media screen and (width < 1024px) {
+    .title-container {
+        font-size: 96px;
+        left: 36px;
+    }
+}
+
+@media screen and (width < 640px) {
+    .title-container {
+        left: 24px;
+        top: 64px;
+        font-size: 56px;
+    }
+}
+
 </style>
 
 <h1 class="title-container">

@@ -28,6 +28,19 @@ img {
     from { top: 465px; }
     to { top: 0px; }
 }
+
+@media screen and (width < 1024px) {
+    img {
+        width: 512px;
+    }
+}
+
+@media screen and (width < 640px) {
+    img {
+        width: 288px;
+    }
+}
+
 </style>
 
 <div class="photo-container">

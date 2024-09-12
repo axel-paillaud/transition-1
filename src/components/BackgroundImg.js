@@ -8,6 +8,7 @@ template.innerHTML = `
 .background-container {
     height: 100%;
     display: flex;
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -118,13 +119,37 @@ template.innerHTML = `
 }
 
 @keyframes opacity-transition {
-from { opacity: 0; }
-to { opacity: 0.6 }
+    from { opacity: 0; }
+    to { opacity: 0.6 }
 }
 
 @keyframes fade-out {
     from { opacity: 1; }
     to {opacity: 0; }
+}
+
+@media screen and (width < 1024px) {
+    @keyframes background-forward {
+        from { width: 512px; height: 384px; filter: blur(0px); }
+        to { width: 100%; height: 100%; filter: blur(1px); }
+    }
+}
+
+@media screen and (width < 640px) {
+    .background-content {
+        height: 576px;
+    }
+
+    @keyframes layer-upward {
+        from { height: 0px; }
+        to { height: 576px; }
+    }
+
+    @keyframes background-forward {
+        from { width: 288px; height: 216px; filter: blur(0px); }
+        to { width: 100%; height: 100%; filter: blur(1px); }
+    }
+
 }
 
 </style>
@@ -175,8 +200,11 @@ export default class BackgroundImg extends HTMLElement {
 
         // Use javascript instead of CSS animation, to prevent immediate settings
         // of value 'height' even with the delay
+        let height = 696;
+        if (window.innerWidth < 640) height = 576;
+
         this.backgroundImgMaskLayer.animate([
-            { height: '696px' },
+            { height: `${height}px` },
             { height: '100%' },
         ], {
                 duration: animationBackground.out.duration,
